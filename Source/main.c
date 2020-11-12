@@ -27,13 +27,13 @@ void generateBoard(int g_board[BOARD_SIZE][BOARD_SIZE]) {
 
 void placeAmazon(int player) {
     int row,column;
-    printf("Enter the coordinates of the amazon:\n", player);
+    printf("Enter the coordinates of the amazon:\n");
 
     if(scanf("%d %d", &row,&column)){
 
         while(g_board[row][column] != 0){
-            printf("Field is already taken!\n", player);
-            printf("Enter the coordinates of the amazon:\n", player);
+            printf("Field is already taken!\n");
+            printf("Enter the coordinates of the amazon:\n");
             scanf("%d %d", &row,&column);
         }
         g_board[row][column] = player;
