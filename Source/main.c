@@ -19,7 +19,8 @@ typedef enum {
 } EArtifact;
 
 void generateBoard(int g_board[BOARD_SIZE][BOARD_SIZE]) {
-
+    
+    //siema
     // printf("Generating game board...\n");
     // populate the board randomly
     // printf("Board generated!\n");
