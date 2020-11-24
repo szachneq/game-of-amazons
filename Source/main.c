@@ -106,8 +106,9 @@ int isMovePossible(int g_board[BOARD_SIZE][BOARD_SIZE]) {
 }
 
 void switchPlayer(int *player) {
-    if (*player == 1) *player = 2;
-    if (*player == 2) *player = 1;
+    // if (*player == 1) *player = 2;
+    // if (*player == 2) *player = 1;
+    // this function switches player
 }
 
 int main() {
