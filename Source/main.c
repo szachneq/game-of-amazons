@@ -92,11 +92,11 @@ EArtifact moveAmazon(int player, int g_board[BOARD_SIZE][BOARD_SIZE]) {
 
 void shootArrow(int player, int g_board[BOARD_SIZE][BOARD_SIZE]) {
     // shoot arrow code
-    printf("Player %d shoot his arrow!\n", player);
+    // printf("Player %d shoot his arrow!\n", player);
 }
 
 void throwSpear(int player, int g_board[BOARD_SIZE][BOARD_SIZE]) {
-    printf("Player %d threw his spear!\n", player);
+    // printf("Player %d threw his spear!\n", player);
     // throw spear code
 }
 
