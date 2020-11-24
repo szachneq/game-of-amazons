@@ -20,9 +20,9 @@ typedef enum {
 
 void generateBoard(int g_board[BOARD_SIZE][BOARD_SIZE]) {
 
-    printf("Generating game board...\n");
+    // printf("Generating game board...\n");
     // populate the board randomly
-    printf("Board generated!\n");
+    // printf("Board generated!\n");
 }
 
 void placeAmazon(int player) {
