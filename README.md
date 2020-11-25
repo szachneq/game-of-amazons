@@ -28,7 +28,7 @@ All meeting reports are available in [Docs](https://gitlab-stud.elka.pw.edu.pl/m
 
 ## Division into libraries
 
-Cała dokumentacja dotycząca podziału funkcji na biblioteki znajduje się w pliku [Libs](https://gitlab-stud.elka.pw.edu.pl/mjakubo3/epfu20w-104-E-amazons/-/blob/master/Lib/libs.txt 'Projects Libs')
+All documentation on the division of functions into libraries is in the [Libs](https://gitlab-stud.elka.pw.edu.pl/mjakubo3/epfu20w-104-E-amazons/-/blob/master/Lib/libs.txt 'Projects Libs')
 
 ## Typing Convention
 
