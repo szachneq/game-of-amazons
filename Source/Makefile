@@ -1,16 +1,27 @@
-edit : main.o Libautonomous.o Libavaliable.o Libmovement.o \
-        gcc -o edit main.o Libautonomous.o Libavaliable.o Libmovement.o main
+LINK_TARGET = test_me.exe
 
-main.o : main.c
-        gcc -o main.c
-Libautonomous.o :  Libautonomous.c 
-		gcc -o Libautonomous.c Libautonomous
-Libavaliable.o : Libavaliable.c Libavaliable
-        gcc -o Libavaliable.c Libavaliable
-# Libinteractive.o : Libinteractive.c
-#         gcc -o Libinteractive.c
-Libmovement.o : Libmovement.c
-        gcc -o Libmovement.c Libmovement
+OBJS =  	\
+ Libinteractive.o \
+ Libavaliable.o \
+ Libmovement.o \
+ main.o
 
-clean :
-        rm edit main.o Libautonomous.o Libavaliable.o Libmovement.o
+REBUILDABLES = $(OBJS) $(LINK_TARGET)
+
+clean : 
+  rm -f $(REBUILDABLES)
+  echo Clean done 
+
+all : $(LINK_TARGET)
+  echo All done
+
+$(LINK_TARGET) : $(OBJS)
+  g++ -g -o $@ $^
+
+%.o : %.cpp
+  g++ -g -o $@ -c $<
+
+Main.o : Main.h Libinteractive.h Libavaliable.h Libmovement.h
+Libinteractive.o : Libinteractive.h
+Libavaliable.o : Libavaliable.h
+Libmovement.o : Libmovement.h
