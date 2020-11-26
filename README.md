@@ -27,6 +27,8 @@ Player which collects most treasure wins
 
 All meeting reports are available in [Docs](https://gitlab-stud.elka.pw.edu.pl/mjakubo3/epfu20w-104-E-amazons/-/tree/master/Docs 'Projets Docs')
 
+Moreover, flowcharts can be found in this directory
+
 ## Division into libraries
 
 All documentation on the division of functions into libraries is in the [Libs](https://gitlab-stud.elka.pw.edu.pl/mjakubo3/epfu20w-104-E-amazons/-/blob/master/Lib/libs.txt 'Projects Libs')
