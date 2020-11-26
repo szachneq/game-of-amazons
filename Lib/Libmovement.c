@@ -20,3 +20,7 @@ void throwSpear(int player, int g_board[BOARD_SIZE][BOARD_SIZE]) {
     // printf("Player %d threw his spear!\n", player);
     // throw spear code
 }
+
+void placeAmazon(int player){
+    // place amazon
+}
