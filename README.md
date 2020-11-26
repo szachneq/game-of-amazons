@@ -48,8 +48,25 @@ Global variables    g_lowerCase or g_lower_case (searchable by g_ prefix)
 ```
 
 ## Running the code
-Navigate to the `Source` folder.
-Then use the command `make && make clean`
 
-Executable file called `a.exe` will appear.
-Use command `./a.exe` to run it
+### For LinuxOS
+
+1. Navigate to the `Source` folder.
+   Then use the commands
+
+```
+1. make && make clean   // To generate compiled output file
+2. ./a                  // To run compiled code
+```
+
+### For WindowsOS
+
+1. Install make for windows [YT-Tutorial](https://www.youtube.com/watch?v=taCJhnBXG_w 'Projects Libs')
+
+2. Navigate to the `Source` folder.
+   Then use the commands
+
+```
+2. make && make clean   // To generate compiled output file
+2. ./a.exe                  // To run compiled code
+```
