@@ -1,27 +1,26 @@
-LINK_TARGET = test_me.exe
+all: a
 
-OBJS =  	\
-Libinteractive.o \
-Libavaliable.o \
-Libmovement.o \
-main.o
+a: main.o libmylib.a#libmylib.a is the dependency for the executable
+		gcc -lm -o a main.o -L. -lmylib
+		
 
-REBUILDABLES = $(OBJS) $(LINK_TARGET)
+main.o : main.c Libinteractive.o Libmovement.o Libmovement.o
+		gcc -Wall -g -c main.c -o main.o
 
-clean : 
-	rm -f $(REBUILDABLES)
-	echo Clean done 
+Libinteractive.o: ../Lib/Libinteractive.c ../Lib/Libinteractive.h
+		gcc -Wall -g -c ../Lib/Libinteractive.c -o Libinteractive.o
 
-all : $(LINK_TARGET)
-	echo All done
+Libavaliable.o: ../Lib/Libavaliable.c ../Lib/Libavaliable.h 
+		gcc -Wall -g -c ../Lib/Libavaliable.c -o Libavaliable.o
 
-$(LINK_TARGET) : $(OBJS)
-	g++ -g -o $@ $^
+Libmovement.o: ../Lib/Libmovement.c ../Lib/Libmovement.h 
+		gcc -Wall -g -c ../Lib/Libmovement.c -o Libmovement.o
 
-%.o : %.cpp
-	g++ -g -o $@ -c $<
+libmylib.a: Libinteractive.o Libavaliable.o Libmovement.o #let's link library files into a static library
+		ar rcs libmylib.a Libinteractive.o Libavaliable.o Libmovement.o
+		
 
-Main.o : Main.h Libinteractive.h Libavaliable.h Libmovement.h
-Libinteractive.o : Libinteractive.h
-Libavaliable.o : Libavaliable.h
-Libmovement.o : Libmovement.h
+libs: libmylib.a
+
+clean:
+		rm -f *.o *.a *.gch #This way is cleaner than your clean

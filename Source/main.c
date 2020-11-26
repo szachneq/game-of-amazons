@@ -4,7 +4,12 @@
 /* Here      */
 
 #include <stdio.h>
-#include "../Lib/Variables.h"
+
+int g_amazons = 5;
+int g_currentPlayer = 1;
+int g_scores[2] = { 0, 0 };
+
+
 #include "../Lib/Libinteractive.h"
 #include "../Lib/Libavaliable.h"
 #include "../Lib/Libmovement.h"
