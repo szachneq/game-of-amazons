@@ -6,7 +6,8 @@
 - [Project Members](#project-members)
 - [Reports](#reports)
 - [Division into libraries](#division-into-libraries)
-- [Typing Conventions](#convention)
+- [Typing Conventions](#typing-convention)
+- [Running the code](#running-the-code)
 
 ## Short description
 
@@ -45,3 +46,10 @@ Trivial variables   i,x,n,f etc...
 Local variables     lower_case or lowerCase
 Global variables    g_lowerCase or g_lower_case (searchable by g_ prefix)
 ```
+
+## Running the code
+Navigate to the `Source` folder.
+Then use the command `make && make clean`
+
+Executable file called `a.exe` will appear.
+Use command `./a.exe` to run it
