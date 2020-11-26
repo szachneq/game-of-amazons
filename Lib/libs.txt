@@ -1,0 +1,13 @@
+Libavaliable.h:
+    isMovePossible
+
+Libinteractive:
+    generateBoard
+    presentBoardState
+    switchPlayer
+
+Libmovement:
+    moveAmazon
+    shootArrow
+    throwSpear
+    placeAmazon
