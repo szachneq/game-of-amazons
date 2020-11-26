@@ -31,7 +31,7 @@ Moreover, flowcharts can be found in this directory
 
 ## Division into libraries
 
-All documentation on the division of functions into libraries is in the [Libs](https://gitlab-stud.elka.pw.edu.pl/mjakubo3/epfu20w-104-E-amazons/-/blob/master/Lib/libs.txt 'Projects Libs')
+All documentation on the division of functions into libraries is in the [Libs](https://gitlab-stud.elka.pw.edu.pl/mjakubo3/epfu20w-104-E-amazons/-/blob/master/Lib/ 'Projects Libs')
 
 ## Typing Convention
 
