@@ -44,7 +44,7 @@ void presentBoardState(Field g_board[BOARD_SIZE][BOARD_SIZE]) {
 
             if(row > 0 && column > 0){
                
-                printf("| %d %d %d ", g_board[row][column].playerID, g_board[row][column].value, g_board[row][column].artifact);
+                printf("| %d %d %d ", g_board[row-1][column-1].value, g_board[row-1][column-1].artifact, g_board[row-1][column-1].playerID);
 
             }
             
