@@ -4,6 +4,10 @@
 /* Here      */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h> 
+
+
 
 int g_amazons = 5;
 int g_currentPlayer = 1;
@@ -15,6 +19,8 @@ int g_scores[2] = { 0, 0 };
 #include "../Lib/Libmovement.h"
 
 int main() {
+    srand(time(0)); 
+
     // Game main source code
     generateBoard(&g_board[0]);
 

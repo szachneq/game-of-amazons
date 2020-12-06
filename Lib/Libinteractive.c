@@ -1,10 +1,16 @@
 #include "Libinteractive.h"
 
-void generateBoard(Field g_board[BOARD_SIZE][BOARD_SIZE]) 
+void generateBoard() 
 {
-    // printf("Generating game board...\n");
-    // populate the board randomly
-    // printf("Board generated!\n");
+    printf("Generating game board...\n");
+    for(int column = 0; column < 10; column++){
+        for(int row = 0; row < 10; row++){
+            g_board[column][row].value = (rand() % (5)); // Assigning random value from 0 - 5 
+            g_board[column][row].artifact = (rand() % (4)) ; // Assigning random value from 0 - 4
+            g_board[column][row].playerID = 0; // Assigning 0 because all fields are unoccupied
+        }
+    }
+    printf("Board generated!\n");
 }
 void presentBoardState(Field g_board[BOARD_SIZE][BOARD_SIZE]) {
 
