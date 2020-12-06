@@ -1,7 +1,7 @@
 #include "Libmovement.h"
 
 
-EArtifact moveAmazon(int player, int g_board[BOARD_SIZE][BOARD_SIZE]) {
+EArtifact moveAmazon(int player, Field g_board[BOARD_SIZE][BOARD_SIZE]) {
     // get user input and alter board state
     // by moving the amazon of the specified player
     // this function returns artifact from the tile
@@ -11,12 +11,12 @@ EArtifact moveAmazon(int player, int g_board[BOARD_SIZE][BOARD_SIZE]) {
     return NONE;
 }
 
-void shootArrow(int player, int g_board[BOARD_SIZE][BOARD_SIZE]) {
+void shootArrow(int player, Field g_board[BOARD_SIZE][BOARD_SIZE]) {
     // shoot arrow code
     // printf("Player %d shoot his arrow!\n", player);
 }
 
-void throwSpear(int player, int g_board[BOARD_SIZE][BOARD_SIZE]) {
+void throwSpear(int player, Field g_board[BOARD_SIZE][BOARD_SIZE]) {
     // printf("Player %d threw his spear!\n", player);
     // throw spear code
 }
