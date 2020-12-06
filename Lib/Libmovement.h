@@ -10,7 +10,7 @@ void shootArrow(int player, Field g_board[BOARD_SIZE][BOARD_SIZE]);
 
 void throwSpear(int player, Field g_board[BOARD_SIZE][BOARD_SIZE]);
 
-void placeAmazon(int player);
+void placeAmazon(int player_id, position p);
 
 
 #endif

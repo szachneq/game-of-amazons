@@ -32,9 +32,9 @@ int main() {
 
     for (int i = 0; i < g_amazons; i++) {
         presentBoardState(g_board);
-        placeAmazon(1);
+        //placeAmazon(1); add arguments to functions and position scanf
         presentBoardState(g_board);
-        placeAmazon(2);
+        //placeAmazon(2); add arguments to functions and position scanf
     }
     while (1) {
         presentBoardState(g_board);
