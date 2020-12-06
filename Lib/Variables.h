@@ -15,6 +15,11 @@ typedef enum {
     HORSE
 } EArtifact;
 
+typedef struct {
+    int value;
+    EArtifact artifact;
+    int playerID;
+}Field;
 
 
 
