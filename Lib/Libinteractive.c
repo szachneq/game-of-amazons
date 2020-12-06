@@ -1,12 +1,12 @@
 #include "Libinteractive.h"
 
-void generateBoard(int g_board[BOARD_SIZE][BOARD_SIZE]) 
+void generateBoard(Field g_board[BOARD_SIZE][BOARD_SIZE]) 
 {
     // printf("Generating game board...\n");
     // populate the board randomly
     // printf("Board generated!\n");
 }
-void presentBoardState(int g_board[BOARD_SIZE][BOARD_SIZE]) {
+void presentBoardState(Field g_board[BOARD_SIZE][BOARD_SIZE]) {
 
     // present board state to the user
     // for(int row = 0; row <= BOARD_SIZE; ++row){

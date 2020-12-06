@@ -5,9 +5,6 @@
     
 #define BOARD_SIZE 10
 
-
-
-int g_board[BOARD_SIZE][BOARD_SIZE];
 typedef enum {
     NONE,
     BROKEN_ARROW,
@@ -17,9 +14,12 @@ typedef enum {
 
 typedef struct {
     int value;
-    EArtifact artifact;
+    EArtifact artifact;  
     int playerID;
+    
 }Field;
+
+Field g_board[BOARD_SIZE][BOARD_SIZE];
 
 
 
