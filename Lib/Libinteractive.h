@@ -4,9 +4,9 @@
 
 void generateBoard(Field board[BOARD_SIZE][BOARD_SIZE]);
 void presentBoardState(Field board[BOARD_SIZE][BOARD_SIZE]);
-void switchPlayer();
-int canPlaceHere(position p, Field board[BOARD_SIZE][BOARD_SIZE]);
-void initPlacement(Field board[BOARD_SIZE][BOARD_SIZE]);
+void switch_player(int *current_player);
+int can_place_here(position p, Field board[BOARD_SIZE][BOARD_SIZE]);
+void init_placement(Field board[BOARD_SIZE][BOARD_SIZE]);
     
 
 #endif

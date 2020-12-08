@@ -9,7 +9,7 @@
 #include "../Lib/Variables.h"
 
 Field g_board[BOARD_SIZE][BOARD_SIZE];
-int g_current_player = 1;
+int current_player = 1;
 int g_scores[2] = { 0, 0 };
 
 
@@ -19,24 +19,24 @@ int g_scores[2] = { 0, 0 };
 
 int main() {
     srand(time(0)); 
-    initPlacement();
+    init_placement();
     while (1) {
         presentBoardState();
-        EArtifact artifact = moveAmazon(g_current_player, &g_board[0]);
+        EArtifact artifact = moveAmazon(current_player, &g_board[0]);
         switch(artifact) {
             case BROKEN_ARROW:
-                switchPlayer(&g_current_player);
+                switch_player(&current_player);
                 break;
             case SPEAR:
-                throwSpear(g_current_player, &g_board[0]);
-                switchPlayer(&g_current_player);
+                throwSpear(current_player, &g_board[0]);
+                switch_player(&current_player);
                 break;
             case HORSE:
-                shootArrow(g_current_player, &g_board[0]);
+                shootArrow(current_player, &g_board[0]);
                 break;
             case NONE:
-                shootArrow(g_current_player, &g_board[0]);
-                switchPlayer(&g_current_player);
+                shootArrow(current_player, &g_board[0]);
+                switch_player(&current_player);
                 break;
         }
         if (!isMovePossible(&g_board[0])) break;

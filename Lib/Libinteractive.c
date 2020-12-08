@@ -57,12 +57,12 @@ void presentBoardState( Field board[BOARD_SIZE][BOARD_SIZE] ) {
     }
 }
 
-void switchPlayer() {
-    if (g_current_player == 1) g_current_player = 2;
-    if (g_current_player == 2) g_current_player = 1;
+void switch_player(int *current_player) {
+    if (*current_player == 1) *current_player = 2;
+    if (*current_player == 2) *current_player = 1;
 }
 
-int canPlaceHere(position p, Field board[BOARD_SIZE][BOARD_SIZE]) {
+int can_place_here(position p, Field board[BOARD_SIZE][BOARD_SIZE]) {
     if (p.x < 1 || p.y < 1) return 0;
     if (p.x > BOARD_SIZE || p.y > BOARD_SIZE) return 0;
     if (board[p.x-1][p.y-1].playerID != 0) return 0;
@@ -70,8 +70,9 @@ int canPlaceHere(position p, Field board[BOARD_SIZE][BOARD_SIZE]) {
     return 0;
 }
 
-void initPlacement(Field board[BOARD_SIZE][BOARD_SIZE] ) {
+void init_placement(Field board[BOARD_SIZE][BOARD_SIZE] ) {
     int amazons = 0;
+    int player_id = 1;
     generateBoard(board);
 
     presentBoardState(board);
@@ -83,11 +84,11 @@ void initPlacement(Field board[BOARD_SIZE][BOARD_SIZE] ) {
         presentBoardState(board);
         position p = { .x=0, .y=0 };
         while (1) {
-            printf("Player %d, input coordinates for amazon (x, y): ", g_current_player);
+            printf("Player %d, input coordinates for amazon (x, y): ", player_id);
             scanf("%d %d", &p.x, &p.y);
-            if (canPlaceHere(p, board)) break;
+            if (can_place_here(p, board)) break;
         }
-        placeAmazon(g_current_player, p);
-        switchPlayer();
+        placeAmazon(player_id, p);
+        player_id = player_id ? 0 : 1;
     }
 }
