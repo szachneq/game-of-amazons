@@ -8,9 +8,9 @@
 #include <time.h> 
 #include "../Lib/Variables.h"
 
-extern Field g_board[BOARD_SIZE][BOARD_SIZE];
-extern int g_current_player;
-extern int g_scores[2];
+Field g_board[BOARD_SIZE][BOARD_SIZE];
+int g_current_player;
+int g_scores[2];
 
 #include "../Lib/Libinteractive.h"
 #include "../Lib/Libavaliable.h"
@@ -18,9 +18,11 @@ extern int g_scores[2];
 
 int main() {
     srand(time(0)); 
-    initPlacement();
+    initPlacement(g_board);
+
+
     while (1) {
-        presentBoardState();
+        presentBoardState(g_board);
         EArtifact artifact = moveAmazon(g_current_player, &g_board[0]);
         switch(artifact) {
             case BROKEN_ARROW:

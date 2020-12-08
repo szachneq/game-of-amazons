@@ -2,11 +2,11 @@
 #define LIBINTERACTIVE_H_INCLUDED
 #include "Variables.h"
 
-void generateBoard();
-void presentBoardState();
+void generateBoard(Field board[BOARD_SIZE][BOARD_SIZE]);
+void presentBoardState(Field board[BOARD_SIZE][BOARD_SIZE]);
 void switchPlayer();
-int can_place_here(position p);
-void initPlacement();
+int canPlaceHere(position p, Field board[BOARD_SIZE][BOARD_SIZE]);
+void initPlacement(Field board[BOARD_SIZE][BOARD_SIZE]);
     
 
 #endif
