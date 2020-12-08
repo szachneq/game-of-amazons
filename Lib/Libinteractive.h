@@ -3,9 +3,10 @@
 #include "Variables.h"
 
 void generateBoard();
-void presentBoardState(Field g_board[BOARD_SIZE][BOARD_SIZE]);
-void switchPlayer(int *player);
-
+void presentBoardState();
+void switchPlayer();
+int can_place_here(position p);
+void initPlacement();
     
 
 #endif

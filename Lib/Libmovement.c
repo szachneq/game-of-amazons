@@ -22,5 +22,6 @@ void throwSpear(int player, Field g_board[BOARD_SIZE][BOARD_SIZE]) {
 }
 
 void placeAmazon(int player_id, position p) {
+
   g_board[p.y][p.x].playerID = player_id;
 }

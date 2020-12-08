@@ -22,6 +22,8 @@ typedef struct {
   int y;
 } position;
 
-Field g_board[BOARD_SIZE][BOARD_SIZE];
+extern Field g_board[BOARD_SIZE][BOARD_SIZE];
+extern int g_current_player;
+extern int g_scores[2];
 
 #endif
