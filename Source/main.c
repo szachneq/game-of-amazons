@@ -9,8 +9,9 @@
 #include "../Lib/Variables.h"
 
 Field g_board[BOARD_SIZE][BOARD_SIZE];
-int g_current_player;
-int g_scores[2];
+int g_current_player = 1;
+int g_scores[2] = { 0, 0 };
+
 
 #include "../Lib/Libinteractive.h"
 #include "../Lib/Libavaliable.h"
@@ -18,11 +19,9 @@ int g_scores[2];
 
 int main() {
     srand(time(0)); 
-    initPlacement(g_board);
-
-
+    initPlacement();
     while (1) {
-        presentBoardState(g_board);
+        presentBoardState();
         EArtifact artifact = moveAmazon(g_current_player, &g_board[0]);
         switch(artifact) {
             case BROKEN_ARROW:
