@@ -57,11 +57,6 @@ void presentBoardState( Field board[BOARD_SIZE][BOARD_SIZE] ) {
     }
 }
 
-void switchPlayer() {
-    if (g_current_player == 1) g_current_player = 2;
-    if (g_current_player == 2) g_current_player = 1;
-}
-
 int canPlaceHere(position p, Field board[BOARD_SIZE][BOARD_SIZE]) {
     if (p.x < 1 || p.y < 1) return 0;
     if (p.x > BOARD_SIZE || p.y > BOARD_SIZE) return 0;

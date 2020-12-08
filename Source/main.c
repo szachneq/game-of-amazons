@@ -19,28 +19,12 @@ int g_scores[2] = { 0, 0 };
 
 int main() {
     srand(time(0)); 
-    initPlacement();
-    while (1) {
-        presentBoardState();
-        EArtifact artifact = moveAmazon(g_current_player, &g_board[0]);
-        switch(artifact) {
-            case BROKEN_ARROW:
-                switchPlayer(&g_current_player);
-                break;
-            case SPEAR:
-                throwSpear(g_current_player, &g_board[0]);
-                switchPlayer(&g_current_player);
-                break;
-            case HORSE:
-                shootArrow(g_current_player, &g_board[0]);
-                break;
-            case NONE:
-                shootArrow(g_current_player, &g_board[0]);
-                switchPlayer(&g_current_player);
-                break;
-        }
-        if (!isMovePossible(&g_board[0])) break;
-    }
+
+    initPlacement(g_board);
+
+    initMovement(g_board);
+
+
     int winner = 0;
     if (g_scores[0] > g_scores[1]) winner = 1;
     if (g_scores[0] < g_scores[1]) winner = 2;

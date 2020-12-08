@@ -4,7 +4,6 @@
 
 void generateBoard(Field board[BOARD_SIZE][BOARD_SIZE]);
 void presentBoardState(Field board[BOARD_SIZE][BOARD_SIZE]);
-void switchPlayer();
 int canPlaceHere(position p, Field board[BOARD_SIZE][BOARD_SIZE]);
 void initPlacement(Field board[BOARD_SIZE][BOARD_SIZE]);
     
