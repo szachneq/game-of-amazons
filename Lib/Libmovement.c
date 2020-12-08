@@ -13,7 +13,12 @@ EArtifact moveAmazon(int player, Field g_board[BOARD_SIZE][BOARD_SIZE]) {
 
 void shootArrow(int player, Field board[BOARD_SIZE][BOARD_SIZE]) {
     // shoot arrow code
-    // printf("Player %d shoot his arrow!\n", player);
+      //      int a,b;
+	//		printf("enter coordinates to shoot an arrow\n");
+	//		scanf(" %d %d", &a, &b);
+            
+			
+    //printf("Player %d shoot his arrow!\n", player);
 }
 
 void throwSpear(int player, Field board[BOARD_SIZE][BOARD_SIZE]) {

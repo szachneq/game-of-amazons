@@ -18,6 +18,3 @@ typedef struct {
   int y;
 } position;
 
-Field g_board[BOARD_SIZE][BOARD_SIZE];
-int g_current_player = 1;
-int g_scores[2] = { 0, 0 };
