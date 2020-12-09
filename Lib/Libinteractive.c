@@ -29,33 +29,59 @@ void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
     printf("Board generated!\n");
 }
 
-void presentBoardState(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
+void presentBoardState(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {​​
+
     // print the state of the board in console
-    for(int row = 1; row <= BOARD_SIZE; row++) {
-        for(int column = 1; column <= BOARD_SIZE; column++) {
-            if(row == 1) {
-                if(column == 1) { printf("| %d ", column); }
-                else { printf("|   %d   ", column); }
-            } else if(column == 1 && row !=1) {
-                if(row == 10) {
+
+    for(int row = 0; row <= BOARD_SIZE; row++) {​​
+
+        for(int column = 0; column <= BOARD_SIZE; column++) {​​
+
+            if(row == 0) {​​
+
+                if(column == 0) {​​ printf("| %d ", column); }​​
+
+                else {​​ printf("|   %d   ", column); }​​
+
+            }​​ else if(column == 0 && row !=0) {​​
+
+                if(row == 10) {​​
+
                     printf("| %d", row);
-                } else if(row < 10) {
+
+                }​​ else if(row < 10) {​​
+
                     printf("| %d ", row);
-                } else {
+
+                }​​ else {​​
+
                     printf("| %d ", row);
-                }
-            }
-            if (row > 1 && column > 1) {
-                printf("| %d %d %d ", board[row-1][column-1].value, board[row-1][column-1].artifact, board[row-1][column-1].playerID);
-            }
-        }
-        if(row == 1) { 
+
+                }​​
+
+            }​​
+
+            if (row > 0 && column > 0) {​​
+
+                printf("| %d %d %d ", board[row][column].value, board[row][column].artifact, board[row][column].playerID);
+
+            }​​
+
+        }​​
+
+        if(row == 0) {​​ 
+
             printf("|\n");
-        } else {
+
+        }​​ else {​​
+
             printf(" |\n");
-        }        
-    }
-}
+
+        }​​        
+
+    }​​
+
+}​​
 
 void switch_player(int *current_player) {
     if (*current_player == 1){ *current_player = 2;}else{ *current_player = 1;}
