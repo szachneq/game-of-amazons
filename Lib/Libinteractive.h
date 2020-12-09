@@ -1,5 +1,8 @@
 #ifndef LIBINTERACTIVE_H_INCLUDED
 #define LIBINTERACTIVE_H_INCLUDED
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "Variables.h"
 
 void generateBoard(Field board[BOARD_SIZE][BOARD_SIZE]);

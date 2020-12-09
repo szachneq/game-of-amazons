@@ -9,14 +9,14 @@ main.o : main.c Libinteractive.o Libmovement.o Libmovement.o
 Libinteractive.o: ../Lib/Libinteractive.c ../Lib/Libinteractive.h
 		gcc -g -c ../Lib/Libinteractive.c -o Libinteractive.o
 
-Libavaliable.o: ../Lib/Libavaliable.c ../Lib/Libavaliable.h 
-		gcc -g -c ../Lib/Libavaliable.c -o Libavaliable.o
+Libavailable.o: ../Lib/Libavailable.c ../Lib/Libavailable.h 
+		gcc -g -c ../Lib/Libavailable.c -o Libavailable.o
 
 Libmovement.o: ../Lib/Libmovement.c ../Lib/Libmovement.h 
 		gcc -g -c ../Lib/Libmovement.c -o Libmovement.o
 
-libmylib.a: Libinteractive.o Libavaliable.o Libmovement.o #let's link library files into a static library
-		ar rcs libmylib.a Libinteractive.o Libavaliable.o Libmovement.o
+libmylib.a: Libinteractive.o Libavailable.o Libmovement.o #let's link library files into a static library
+		ar rcs libmylib.a Libinteractive.o Libavailable.o Libmovement.o
 
 libs: libmylib.a
 

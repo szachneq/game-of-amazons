@@ -1,4 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "Libmovement.h"
+#include "Libavailable.h"
+#include "Libinteractive.h"
 
 
 EArtifact moveAmazon(int player, Field board[BOARD_SIZE][BOARD_SIZE]) {
@@ -60,7 +65,7 @@ void throwSpear(int player, Field board[BOARD_SIZE][BOARD_SIZE]) {
         printf("Player %d threw his spear!\n", player);
 }
 
-void initMovement( Field board[BOARD_SIZE][BOARD_SIZE] ){
+void initMovement( Field board[BOARD_SIZE][BOARD_SIZE] ) {
 
         int current_player = 1;
 
