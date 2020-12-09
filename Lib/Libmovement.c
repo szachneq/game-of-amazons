@@ -15,7 +15,7 @@ EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD
         printf("Player %d, input coordinates for amazon that you want to move (x, y): ", player);
         scanf("%d %d", &pAamazon.x, &pAamazon.y);
 
-        if(board[pAamazon.y-1][pAamazon.x-1].playerID = player){
+        if(board[pAamazon.y][pAamazon.x].playerID = player){
             canAmazonMove(pAamazon);
         }
     }
@@ -41,7 +41,7 @@ EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD
     // 4. Clean the old spot 
 
     // 5. Move amazon to new position
-    board[p.y-1][p.x-1].playerID = player;
+    board[p.y][p.x].playerID = player;
 
     // 6. addScore()
 
@@ -57,9 +57,9 @@ void shootArrow(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE
 	    printf("Player %d :enter coordinates to shoot an arrow\n", player);
     
 		scanf(" %d %d", &a, &b);
-        if( isThrowArrow(board[a-1][b-1].playerID))
+        if( isThrowArrow(board[a][b].playerID))
         {
-            board[a-1][b-1].playerID = 9;        
+            board[a][b].playerID = 9;        
         }
         printf("Player %d shoot his arrow!\n", player);
 }
@@ -70,9 +70,9 @@ void throwSpear(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE
 	    printf("Player %d :enter coordinates to shoot an spear\n", player);
     
 		scanf(" %d %d", &a, &b);
-        if(isThrowSpear(board[a-1][b-1].playerID))
+        if(isThrowSpear(board[a][b].playerID))
         {
-            board[a-1][b-1].playerID = 9;        
+            board[a][b].playerID = 9;        
         }
         printf("Player %d threw his spear!\n", player);
 }

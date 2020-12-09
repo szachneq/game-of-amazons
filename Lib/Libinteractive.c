@@ -70,13 +70,13 @@ void switch_player(int *current_player) {
 int can_place_here(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
     if (p.x < 1 || p.y < 1) return 0;
     if (p.x > BOARD_SIZE || p.y > BOARD_SIZE) return 0;
-    if (board[p.x-1][p.y-1].playerID != 0) return 0;
+    if (board[p.x][p.y].playerID != 0) return 0;
     return 1;
     return 0;
 }
 
 void placeAmazon(int player, position p,  Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
-  board[p.y-1][p.x-1].playerID = player;
+  board[p.y][p.x].playerID = player;
 }
 
 void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
