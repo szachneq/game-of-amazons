@@ -8,14 +8,24 @@ void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
     printf("Generating game board...\n");
 
     // To define limits of the significant artifacts
-
-    for(int column = 0; column < 10; column++){
-        for(int row = 0; row < 10; row++){
+    // first row - border
+    for (int column = 0; column < INTERNAL_BOARD_SIZE; column++) {
+        board[0][column] = 9;
+    }
+    for(int row = 1; row < BOARD_SIZE; row++){
+        board[row][0] = 9; // first column - border
+        for(int column = 0; column < BOARD_SIZE; column++) {
             board[column][row].value = (rand() % (5)); // Assigning random value from 0 - 5 
             board[column][row].artifact = (rand() % (4)) ; // Assigning random value from 0 - 4
             board[column][row].playerID = 0; // Assigning 0 because all fields are unoccupied
         }
+        board[row][INTERNAL_BOARD_SIZE-1] = 9; // last column - border
     }
+    // last row - border
+    for (int column = 0; column < INTERNAL_BOARD_SIZE; column++) {
+        board[INTERNAL_BOARD_SIZE-1][column] = 9;
+    }
+
     printf("Board generated!\n");
 }
 
