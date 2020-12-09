@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Variables.h"
-#include "Libavaliable.h"
+#include "Libavailable.h"
 #include "Libinteractive.h"
 
 EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);

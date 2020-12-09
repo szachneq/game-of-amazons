@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Libmovement.h"
-#include "Libavaliable.h"
+#include "Libavailable.h"
 #include "Libinteractive.h"
 
 
@@ -16,12 +16,9 @@ EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD
         scanf("%d %d", &pAamazon.x, &pAamazon.y);
 
         if(board[pAamazon.y][pAamazon.x].playerID = player){
-            canAmazonMove(pAamazon);
+            canAmazonMove(pAamazon, board);
         }
     }
-
-
-    // 2. Can chosen 
     
     // 3. Where to move ?
 

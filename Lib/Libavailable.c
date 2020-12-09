@@ -1,4 +1,4 @@
-#include "Libavaliable.h"
+#include "Libavailable.h"
 
 int isMovePossible(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player)
  {

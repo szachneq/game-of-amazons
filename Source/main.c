@@ -13,7 +13,7 @@ int current_player = 1;
 int g_scores[2] = { 0, 0 };
 
 
-#include "../Lib/Libavaliable.h"
+#include "../Lib/Libavailable.h"
 #include "../Lib/Libinteractive.h"
 #include "../Lib/Libmovement.h"
 

@@ -1,4 +1,4 @@
-Libavaliable.h:
+Libavailable.h:
     isMovePossible
 
 Libinteractive:
