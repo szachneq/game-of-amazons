@@ -1,6 +1,6 @@
 #include "Libavaliable.h"
 
-int isMovePossible(Field board[INTERNAL_INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player)
+int isMovePossible(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player)
  {
     // 1. Find all player amazons (x,y coordinates) array of c coordinates ( position coordinates[n] )
     // 2. For at least one amaznon if there is an unoccupied field n*canAmazonMove()
