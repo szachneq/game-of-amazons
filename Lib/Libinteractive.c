@@ -13,7 +13,7 @@ void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
         board[0][column].playerID = 9;
     }
     for(int row = 1; row < BOARD_SIZE; row++){
-        board[row][0] = 9; // first column - border
+        board[row][0].playerID = 9; // first column - border
         for(int column = 0; column < BOARD_SIZE; column++) {
             board[column][row].value = (rand() % (5)); // Assigning random value from 0 - 5 
             board[column][row].artifact = (rand() % (4)) ; // Assigning random value from 0 - 4
