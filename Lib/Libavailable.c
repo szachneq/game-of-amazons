@@ -17,14 +17,14 @@ int canAmazonMove(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SI
     // and returns whether it can move
     int can_move = 0;
 
-    if (board[p.y-1][p.x-1] == 0) { can_move = 1; }
-    if (board[p.y-1][p.x] == 0)   { can_move = 1; }
-    if (board[p.y-1][p.x+1] == 0) { can_move = 1; }
-    if (board[p.y][p.x-1] == 0)   { can_move = 1; }
-    if (board[p.y][p.x+1] == 0)   { can_move = 1; }
-    if (board[p.y+1][p.x-1] == 0) { can_move = 1; }
-    if (board[p.y+1][p.x] == 0)   { can_move = 1; }
-    if (board[p.y+1][p.x+1] == 0) { can_move = 1; }
+    if (board[p.y-1][p.x-1].playerID == 0) { can_move = 1; }
+    if (board[p.y-1][p.x].playerID   == 0)   { can_move = 1; }
+    if (board[p.y-1][p.x+1].playerID == 0) { can_move = 1; }
+    if (board[p.y][p.x-1].playerID   == 0)   { can_move = 1; }
+    if (board[p.y][p.x+1].playerID   == 0)   { can_move = 1; }
+    if (board[p.y+1][p.x-1].playerID == 0) { can_move = 1; }
+    if (board[p.y+1][p.x].playerID   == 0)   { can_move = 1; }
+    if (board[p.y+1][p.x+1].playerID == 0) { can_move = 1; }
 
     return can_move;
 }
