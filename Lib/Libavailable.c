@@ -13,19 +13,20 @@ int isMovePossible(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int pl
 }
 
 int canAmazonMove(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
-    // takes x,y ind returns if the can be move done
-    int canMove = ;
+    // takes coordinates of amazon on the board
+    // and returns whether it can move
+    int can_move = 0;
 
-    if (board[p.y-1][p.x-1] == 0) { canMove = 1; }
-    if (board[p.y-1][p.x] == 0)   { canMove = 1; }
-    if (board[p.y-1][p.x+1] == 0) { canMove = 1; }
-    if (board[p.y][p.x-1] == 0)   { canMove = 1; }
-    if (board[p.y][p.x+1] == 0)   { canMove = 1; }
-    if (board[p.y+1][p.x-1] == 0) { canMove = 1; }
-    if (board[p.y+1][p.x] == 0)   { canMove = 1; }
-    if (board[p.y+1][p.x+1] == 0) { canMove = 1; }
+    if (board[p.y-1][p.x-1] == 0) { can_move = 1; }
+    if (board[p.y-1][p.x] == 0)   { can_move = 1; }
+    if (board[p.y-1][p.x+1] == 0) { can_move = 1; }
+    if (board[p.y][p.x-1] == 0)   { can_move = 1; }
+    if (board[p.y][p.x+1] == 0)   { can_move = 1; }
+    if (board[p.y+1][p.x-1] == 0) { can_move = 1; }
+    if (board[p.y+1][p.x] == 0)   { can_move = 1; }
+    if (board[p.y+1][p.x+1] == 0) { can_move = 1; }
 
-    return canMove;
+    return can_move;
 }
 
 
