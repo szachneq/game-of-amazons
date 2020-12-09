@@ -36,7 +36,7 @@ void presentBoardState(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
             if(row == 1) {
                 if(column == 1) { printf("| %d ", column); }
                 else { printf("|   %d   ", column); }
-            } else if(column == 0 && row !=0) {
+            } else if(column == 1 && row !=1) {
                 if(row == 10) {
                     printf("| %d", row);
                 } else if(row < 10) {
