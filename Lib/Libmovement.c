@@ -14,7 +14,7 @@ EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD
         do{
         printf("Player %d, input coordinates for amazon that you want to move (x, y): ", player);
         scanf("%d %d", &pAamazon.x, &pAamazon.y);
-        }while(board[pAamazon.x-1][pAamazon.y-1].playerID != 1 || board[pAamazon.x-1][pAamazon.y-1].playerID != 2 );
+        }while(board[pAamazon.x][pAamazon.y].playerID != player );
          
 
         if(board[pAamazon.y][pAamazon.x].playerID = player){
