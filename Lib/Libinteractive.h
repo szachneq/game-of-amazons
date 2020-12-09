@@ -11,6 +11,7 @@ void switch_player(int *current_player);
 void placeAmazon(int player_id, position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
 int can_place_here(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
 void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
+void addScore(int value, int player);
     
 
 #endif

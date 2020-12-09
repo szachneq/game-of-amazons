@@ -73,6 +73,13 @@ void placeAmazon(int player, position p,  Field board[INTERNAL_BOARD_SIZE][INTER
   board[p.y][p.x].playerID = player;
 }
 
+void addScore(int value, int player){
+
+    // addScore() summ player score
+
+}
+
+
 void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
     int amazons = 0;
     int player_id = 1;
