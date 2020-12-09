@@ -6,16 +6,28 @@
 #include "Libinteractive.h"
 
 
-EArtifact moveAmazon(int player, Field board[BOARD_SIZE][BOARD_SIZE]) {
+EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
+
+    position pAamazon = { .x=0, .y=0 }, p = { .x=0, .y=0 };
 
     // 1. Ask which amazone to make move with
-    // 2. Can chosen canAmazonMove()
+    while (1) {
+        printf("Player %d, input coordinates for amazon that you want to move (x, y): ", player);
+        scanf("%d %d", &pAamazon.x, &pAamazon.y);
+
+        if(board[pAamazon.y-1][pAamazon.x-1].playerID = player){
+            canAmazonMove(pAamazon);
+        }
+    }
+
+
+    // 2. Can chosen 
     
     // 3. Where to move ?
-    position p = { .x=0, .y=0 };
+
     while (1) {
         printf("Player %d, input coordinates for amazon to move (x, y): ", player);
-        scanf("%d %d", &p.x, &p.y);
+        scanf("%d %d", &p.y, &p.x);
 
         // To make can_amazon_move_here() function
 
@@ -31,14 +43,14 @@ EArtifact moveAmazon(int player, Field board[BOARD_SIZE][BOARD_SIZE]) {
     // 5. Move amazon to new position
     board[p.y-1][p.x-1].playerID = player;
 
-    //6. addScore()
+    // 6. addScore()
 
-    //7. Return artifact form new spot
+    // 7. Return artifact form new spot
 
     return NONE;
 }
 
-void shootArrow(int player, Field board[BOARD_SIZE][BOARD_SIZE]) {
+void shootArrow(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
 
     // shoot arrow code
         int a,b;
@@ -52,7 +64,7 @@ void shootArrow(int player, Field board[BOARD_SIZE][BOARD_SIZE]) {
         printf("Player %d shoot his arrow!\n", player);
 }
 
-void throwSpear(int player, Field board[BOARD_SIZE][BOARD_SIZE]) {
+void throwSpear(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
 
      int a,b;
 	    printf("Player %d :enter coordinates to shoot an spear\n", player);
@@ -65,7 +77,7 @@ void throwSpear(int player, Field board[BOARD_SIZE][BOARD_SIZE]) {
         printf("Player %d threw his spear!\n", player);
 }
 
-void initMovement( Field board[BOARD_SIZE][BOARD_SIZE] ) {
+void initMovement( Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
 
         int current_player = 1;
 

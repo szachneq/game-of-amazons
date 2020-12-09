@@ -7,10 +7,10 @@
 #include "Libavaliable.h"
 #include "Libinteractive.h"
 
-EArtifact moveAmazon(int player, Field board[BOARD_SIZE][BOARD_SIZE]);
-void shootArrow(int player, Field board[BOARD_SIZE][BOARD_SIZE]);
+EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
+void shootArrow(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
 void switchPlayer(int *current_player);
-void throwSpear(int player, Field board[BOARD_SIZE][BOARD_SIZE]);
-void initMovement( Field board[BOARD_SIZE][BOARD_SIZE] );
+void throwSpear(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
+void initMovement( Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] );
 
 #endif

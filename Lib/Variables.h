@@ -3,6 +3,7 @@
 #define VARIABLES_H_INCLUDED
 
 #define BOARD_SIZE 10
+#define INTERNAL_BOARD_SIZE 12
 
 typedef enum {
     NONE = 0,

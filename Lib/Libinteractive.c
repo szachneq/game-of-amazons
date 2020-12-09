@@ -4,7 +4,7 @@
 #include "Libinteractive.h"
 #include "Variables.h"
 
-void generateBoard(Field board[BOARD_SIZE][BOARD_SIZE]) {
+void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
     printf("Generating game board...\n");
 
     // To define limits of the significant artifacts
@@ -19,10 +19,10 @@ void generateBoard(Field board[BOARD_SIZE][BOARD_SIZE]) {
     printf("Board generated!\n");
 }
 
-void presentBoardState( Field board[BOARD_SIZE][BOARD_SIZE] ) {
+void presentBoardState( Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
     //present board state to the user
-    for(int row = 0; row <= BOARD_SIZE; row++){
-        for(int column = 0; column <= BOARD_SIZE; column++){
+    for(int row = 0; row <= INTERNAL_BOARD_SIZE; row++){
+        for(int column = 0; column <= INTERNAL_BOARD_SIZE; column++){
 
             if(row == 0){
               
@@ -67,7 +67,7 @@ void switch_player(int *current_player) {
     if (*current_player == 1){ *current_player = 2;}else{ *current_player = 1;}
 }
 
-int can_place_here(position p, Field board[BOARD_SIZE][BOARD_SIZE]) {
+int can_place_here(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
     if (p.x < 1 || p.y < 1) return 0;
     if (p.x > BOARD_SIZE || p.y > BOARD_SIZE) return 0;
     if (board[p.x-1][p.y-1].playerID != 0) return 0;
@@ -75,11 +75,11 @@ int can_place_here(position p, Field board[BOARD_SIZE][BOARD_SIZE]) {
     return 0;
 }
 
-void placeAmazon(int player, position p,  Field board[BOARD_SIZE][BOARD_SIZE]) {
+void placeAmazon(int player, position p,  Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
   board[p.y-1][p.x-1].playerID = player;
 }
 
-void init_placement(Field board[BOARD_SIZE][BOARD_SIZE] ) {
+void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
     int amazons = 0;
     int player_id = 1;
     generateBoard(board);

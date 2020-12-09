@@ -5,12 +5,12 @@
 #include <time.h>
 #include "Variables.h"
 
-void generateBoard(Field board[BOARD_SIZE][BOARD_SIZE]);
-void presentBoardState(Field board[BOARD_SIZE][BOARD_SIZE]);
+void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
+void presentBoardState(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
 void switch_player(int *current_player);
-void placeAmazon(int player_id, position p, Field board[BOARD_SIZE][BOARD_SIZE]);
-int can_place_here(position p, Field board[BOARD_SIZE][BOARD_SIZE]);
-void init_placement(Field board[BOARD_SIZE][BOARD_SIZE]);
+void placeAmazon(int player_id, position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
+int can_place_here(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
+void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
     
 
 #endif
