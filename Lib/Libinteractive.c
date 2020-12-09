@@ -29,45 +29,29 @@ void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
     printf("Board generated!\n");
 }
 
-void presentBoardState( Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
-    //present board state to the user
-    for(int row = 0; row <= INTERNAL_BOARD_SIZE; row++){
-        for(int column = 0; column <= INTERNAL_BOARD_SIZE; column++){
-
-            if(row == 0){
-              
-                if(column == 0){
-                    printf("| %d ", column);
-                }else{
-                    printf("|   %d   ", column);
-                 }
-                
-            }else if(column == 0 && row !=0){
-                if(row == 10){
+void presentBoardState(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
+    // print the state of the board in console
+    for(int row = 0; row <= INTERNAL_BOARD_SIZE; row++) {
+        for(int column = 0; column <= INTERNAL_BOARD_SIZE; column++) {
+            if(row == 0) {
+                if(column == 0) { printf("| %d ", column); }
+                else { printf("|   %d   ", column); }
+            } else if(column == 0 && row !=0) {
+                if(row == 10) {
                     printf("| %d", row);
+                } else if(row < 10) {
+                    printf("| %d ", row);
+                } else {
+                    printf("| %d ", row);
                 }
-                else if(row < 10){
-                    
-                 printf("| %d ", row);
-                 }
-                 else{
-                     printf("| %d ", row);
-                 }
-
             }
-            
-
-            if(row > 0 && column > 0){
-               
+            if (row > 0 && column > 0) {
                 printf("| %d %d %d ", board[row-1][column-1].value, board[row-1][column-1].artifact, board[row-1][column-1].playerID);
-
             }
-            
         }
-        if(row == 0){ 
+        if(row == 0) { 
             printf("|\n");
-        }
-        else{
+        } else {
             printf(" |\n");
         }        
     }
