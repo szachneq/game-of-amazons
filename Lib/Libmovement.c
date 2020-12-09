@@ -5,9 +5,8 @@
 #include "Libavailable.h"
 #include "Libinteractive.h"
 
-
 EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
-
+    EArtifact currFieldArtifact;
     position pAamazon = { .x=0, .y=0 }, p = { .x=0, .y=0 };
 
     // 1. Ask which amazone to make move with
@@ -16,35 +15,35 @@ EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD
         scanf("%d %d", &pAamazon.x, &pAamazon.y);
 
         if(board[pAamazon.y][pAamazon.x].playerID = player){
-            canAmazonMove(pAamazon, board);
+            
+            if(canAmazonMove(pAamazon, board)){
+                
+                while (1) {
+                    printf("Player %d, input coordinates for amazon to move (x, y): ", player);
+                    scanf("%d %d", &p.y, &p.x);
+
+                // To make can_amazon_move_here() function
+
+                if (canAmazonMoveHere(p, board)) 
+                {
+                    break;
+                }
+
+                }  
+                break;         
+            }
         }
-    }
-    
-    // 3. Where to move ?
-
-    while (1) {
-        printf("Player %d, input coordinates for amazon to move (x, y): ", player);
-        scanf("%d %d", &p.y, &p.x);
-
-        // To make can_amazon_move_here() function
-
-        // if (can_amazon_move_here(p, board)) 
-        // {
-        //     break;
-        // }
-
     }
 
     // 4. Clean the old spot 
-
+    board[pAamazon.y][pAamazon.x].playerID = 0;
     // 5. Move amazon to new position
     board[p.y][p.x].playerID = player;
-
     // 6. addScore()
-
+    addScore(board[p.y][p.x].value, player);
     // 7. Return artifact form new spot
-
-    return NONE;
+    currFieldArtifact = (EArtifact) board[p.y][p.x].artifact;
+    return currFieldArtifact;
 }
 
 void shootArrow(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {

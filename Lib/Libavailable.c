@@ -19,6 +19,12 @@ int canAmazonMove(position p){
     return 1;
 }
 
+int canAmazonMoveHere(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]){
+
+    // cheack vertically, horizontally, diagonally from amazon if amazon can move and of the field is free
+    return 1;
+}
+
 
 
 int canPlaceHere(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
