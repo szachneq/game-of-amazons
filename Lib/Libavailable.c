@@ -2,11 +2,10 @@
 
 int isMovePossible(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player)
  {
+     // TODO
     // 1. Find all player amazons (x,y coordinates) array of c coordinates ( position coordinates[n] )
     // 2. For at least one amaznon if there is an unoccupied field n*canAmazonMove()
-
     // Ask if one player can play if the other cannot move?
-
     // 3. Return result
 
     return 1;
