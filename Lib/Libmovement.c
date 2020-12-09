@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Libmovement.h"
-#include "Libavailable.h"
+#include "Libavaliable.h"
 #include "Libinteractive.h"
 
 
