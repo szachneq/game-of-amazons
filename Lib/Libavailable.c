@@ -49,7 +49,7 @@ int canAmazonMoveHere(position p, position pAamazon, Field board[INTERNAL_BOARD_
 
     if(p.x == pAamazon.x){return isPathClear(p, pAamazon, board, (ERoadType)1);}
     if(p.y == pAamazon.y){return isPathClear(p, pAamazon, board, (ERoadType)2);}
-    if(canPlaceHere(p, board)){
+    if(can_place_here(p, board)){
         if(isDiagonall(p, pAamazon)){
             isPathClear(p, pAamazon, board, (ERoadType)3);
         }  
