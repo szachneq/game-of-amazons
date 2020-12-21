@@ -12,27 +12,33 @@ EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD
     // 1. Ask which amazone to make move with
     while (1) {
         do{
+        
         printf("Player %d, input coordinates for amazon that you want to move (x, y): ", player);
         scanf("%d %d", &pAamazon.x, &pAamazon.y);
-        }while(board[pAamazon.x][pAamazon.y].playerID != player );
+        if(board[pAamazon.y][pAamazon.x].playerID != player){
+            printf("Hmmm, missclick?\n");
+        }
+        }while(board[pAamazon.y][pAamazon.x].playerID != player );
          
 
         if(board[pAamazon.y][pAamazon.x].playerID = player){
             
             if(canAmazonMove(pAamazon, board)){
                 
-                while (1) {
+                while (1) 
+                {
                     printf("Player %d, input coordinates for amazon to move (x, y): ", player);
-                    scanf("%d %d", &p.y, &p.x);
+                    scanf("%d %d", &p.x, &p.y);
 
                 // To make can_amazon_move_here() function
 
-                if (canAmazonMoveHere(p, board)) 
-                {
-                    break;
-                }
+                     if (canAmazonMoveHere(p, board)) 
+                     {
+                         break;
+                     }
 
                 }  
+
                 break;         
             }
         }
@@ -53,12 +59,12 @@ void shootArrow(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE
 
     // shoot arrow code
         int a,b;
-	    printf("Player %d :enter coordinates to shoot an arrow\n", player);
+	    printf("Player %d, enter coordinates to shoot an arrow (x, y):", player);
     
 		scanf(" %d %d", &a, &b);
-        if( isThrowArrow(board[a][b].playerID))
+        if( isThrowArrow(board[b][a].playerID))
         {
-            board[a][b].playerID = 9;        
+            board[b][a].playerID = 9;        
         }
         printf("Player %d shoot his arrow!\n", player);
 }
@@ -69,9 +75,9 @@ void throwSpear(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE
 	    printf("Player %d :enter coordinates to shoot an spear\n", player);
     
 		scanf(" %d %d", &a, &b);
-        if(isThrowSpear(board[a][b].playerID))
+        if(isThrowSpear(board[b][a].playerID))
         {
-            board[a][b].playerID = 9;        
+            board[b][a].playerID = 9;        
         }
         printf("Player %d threw his spear!\n", player);
 }

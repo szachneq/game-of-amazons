@@ -1,4 +1,6 @@
 #include "Libavailable.h"
+#include "Variables.h"
+#include <stdio.h>
 
 int isMovePossible(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player)
  {
@@ -36,12 +38,26 @@ int canAmazonMoveHere(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOAR
 
 
 
-int canPlaceHere(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
-    if (p.x < 1 || p.y < 1) return 0;
-    if (p.x > BOARD_SIZE || p.y > BOARD_SIZE) return 0;
-    if (board[p.x][p.y].playerID != 0) return 0;
-    return 1;
-    return 0;
+int can_place_here(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
+    if (p.x < 1 || p.y < 1) 
+    {
+        printf("Under boundries\n");
+        return 0; 
+        
+        }
+    if (p.x > BOARD_SIZE || p.y > BOARD_SIZE)  {
+        printf("Over boundries\n");
+        return 0; 
+        
+        }
+    if (board[p.y][p.x].playerID != 0) {
+        printf("Field is occupied\n");
+        return 0; 
+        
+        }
+        printf("Sucessful placement\n");
+      return 1;
+ 
 }
 
 int isThrowArrow(int isArrow){
