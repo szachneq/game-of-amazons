@@ -9,7 +9,7 @@
 #include "../Lib/Variables.h"
 
 Field g_board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE];
-int current_player = 1;
+
 int g_scores[2] = { 0, 0 };
 
 
