@@ -64,7 +64,7 @@ void switch_player(int *current_player) {
 int can_place_here(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
     if (p.x < 1 || p.y < 1) return 0;
     if (p.x > BOARD_SIZE || p.y > BOARD_SIZE) return 0;
-    if (board[p.x][p.y].playerID != 0) return 0;
+    if (board[p.y][p.x].playerID != 0) return 0;
     return 1;
     return 0;
 }

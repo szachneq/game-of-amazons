@@ -12,6 +12,13 @@ typedef enum {
     SPEAR = 3,
 } EArtifact;
 
+typedef enum {
+    VERTICALL = 1,
+    HORIZONTALL = 2,
+    DIAGONALL = 3,
+} ERoadType;
+
+
 typedef struct {
     int value;
     EArtifact artifact;  
