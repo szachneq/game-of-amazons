@@ -6,7 +6,11 @@ typedef enum {
     BROKEN_ARROW = 2,
     SPEAR = 3,
 } EArtifact;
-
+typedef enum {
+    VERTICALL = 1,
+    HORIZONTALL = 2,
+    DIAGONALL = 3,
+} ERoadType;
 typedef struct {
     int value;
     EArtifact artifact;  

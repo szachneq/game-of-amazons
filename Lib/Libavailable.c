@@ -1,6 +1,8 @@
 #include "Libavailable.h"
 #include "Variables.h"
 #include <stdio.h>
+#include "Libinteractive.h"
+#include <math.h>
 
 int isMovePossible(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player)
  {
@@ -30,10 +32,33 @@ int canAmazonMove(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SI
     return can_move;
 }
 
-int canAmazonMoveHere(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]){
+int isDiagonall(position p, position pAamazon){
+    int xCor = abs(p.x - pAamazon.x);
+    int yCor = abs(p.y - pAamazon.y);
 
+    return (xCor = yCor) ? 1 : 0;
+}
+
+int isPathClear(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], ERoadType type){
+    
+    // type is trip of amazon verticall(1), horizontall(2), diagonall (3)
+    
+
+}
+
+int canAmazonMoveHere(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]){
     // cheack vertically, horizontally, diagonally from amazon if amazon can move and of the field is free
-    return 1;
+
+    if(p.x == pAamazon.x){return isPathClear(p, pAamazon, board, (ERoadType)1);}
+    if(p.y == pAamazon.y){return isPathClear(p, pAamazon, board, (ERoadType)2);}
+    if(can_place_here(p, board)){
+        if(isDiagonall(p, pAamazon)){
+            isPathClear(p, pAamazon, board, (ERoadType)3);
+        }  
+    }
+
+    presentBoardState(board);
+    return 0;
 }
 
 

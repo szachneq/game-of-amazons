@@ -32,10 +32,10 @@ EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD
 
                 // To make can_amazon_move_here() function
 
-                     if (canAmazonMoveHere(p, board)) 
-                     {
-                         break;
-                     }
+                if (canAmazonMoveHere(p, pAamazon, board)) 
+                {
+                    break;
+                }
 
                 }  
 

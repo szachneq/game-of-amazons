@@ -69,7 +69,6 @@ void switch_player(int *current_player) {
 }
 
 
-
 void placeAmazon(int player, position p,  Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
   board[p.y][p.x].playerID = player;
 }
