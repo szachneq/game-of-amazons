@@ -21,4 +21,4 @@ libmylib.a: Libinteractive.o Libavailable.o Libmovement.o #let's link library fi
 libs: libmylib.a
 
 clean:
-		rm -f *.o *.a *.gch #This way is cleaner than your clean
+		rm -f *.o *.a *.gch #This way is cleaner than my moms house
