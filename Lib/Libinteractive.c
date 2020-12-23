@@ -4,12 +4,15 @@
 #include "Libinteractive.h"
 #include "Variables.h"
 #include "Libavailable.h"
+#include "Libmovement.h"
 
 void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
     printf("Generating game board...\n");
 
     // To define limits of the significant artifacts
     // it is first row == border
+    
+   
     for (int column = 0; column < INTERNAL_BOARD_SIZE; column++) {
         board[0][column].playerID = 9;
     }
@@ -17,7 +20,7 @@ void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
         board[row][0].playerID = 9; // it is first column = border
         for(int column = 1; column <= BOARD_SIZE; column++) {
             board[column][row].value = (rand() % (5)); // Assigning random value from 0 - 5 
-            board[column][row].artifact = (rand() % (4)) ; // Assigning random value from 0 - 4
+            board[column][row].artifact = (rand() % (4)); // Assigning random value from 0 - 4
             board[column][row].playerID = 0; // Assigning 0 because all fields are unoccupied
         }
         board[row][INTERNAL_BOARD_SIZE-1].playerID = 9; // it is last column = border
@@ -58,7 +61,8 @@ void presentBoardState(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
     }
 }
 
-void switch_player(int *current_player) {
+void switch_player(int *current_player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) 
+{
     if (*current_player == 1)
     { 
         *current_player = 2;
@@ -66,11 +70,25 @@ void switch_player(int *current_player) {
     else{ 
         *current_player = 1;
         }
+        presentBoardState(board);
+}
+//potrzebne jest też
+void switch_playerPrime(int *current_player) 
+{
+    if (*current_player == 1)
+    { 
+        *current_player = 2;
+        }
+    else{ 
+        *current_player = 1;
+        }
+        
 }
 
 
 void placeAmazon(int player, position p,  Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
   board[p.y][p.x].playerID = player;
+  presentBoardState(board);
 }
 
 void addScore(int value, int player){
@@ -92,7 +110,7 @@ void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
 
     scanf("%d", &amazons);
     for (int i = 0; i < amazons*2 ; i++) {
-        presentBoardState(board);
+        
         position p = { .x=0, .y=0 };
         while (1) {
             printf("Player %d, input coordinates for amazon (x, y): ", player_id);
@@ -100,6 +118,7 @@ void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
             if (can_place_here(p, board)) break;
         }
         placeAmazon(player_id, p, board);
-        switch_player(&player_id);
+        
+        switch_playerPrime(&player_id);
     }
 }

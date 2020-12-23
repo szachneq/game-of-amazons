@@ -7,9 +7,10 @@
 #include "Libavailable.h"
 #include "Libinteractive.h"
 
-EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
+EArtifact chooseAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
+EArtifact moveAmazon(int player, position pAamazon,  Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
 void shootArrow(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
-void switchPlayer(int *current_player);
+void switch_player(int *current_player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
 void throwSpear(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
 void initMovement( Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] );
 
