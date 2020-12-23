@@ -81,6 +81,7 @@ void addScore(int value, int player){
 
 
 void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
+    
     int amazons = 0;
     int player_id = 1;
     generateBoard(board);

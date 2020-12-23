@@ -15,37 +15,30 @@ EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD
         
         printf("Player %d, input coordinates for amazon that you want to move (x, y): ", player);
         scanf("%d %d", &pAamazon.x, &pAamazon.y);
-        if(board[pAamazon.y][pAamazon.x].playerID != player){
-            printf("Hmmm, missclick?\n");
-        }
-        }while(board[pAamazon.y][pAamazon.x].playerID != player );
+            if(board[pAamazon.y][pAamazon.x].playerID != player) {
+                printf("Hmmm, missclick?\n");
+            }
+        }while(board[pAamazon.y][pAamazon.x].playerID != player);
          
 
-        if(board[pAamazon.y][pAamazon.x].playerID = player){
+        if(board[pAamazon.y][pAamazon.x].playerID = player) {
             
-            if(canAmazonMove(pAamazon, board)){
+            if(canAmazonMove(pAamazon, board)) {
                 
-                while (1) 
+               do
                 {
                     printf("Player %d, input coordinates for amazon to move (x, y): ", player);
                     scanf("%d %d", &p.x, &p.y);
+                } while(canAmazonMoveHere(p, pAamazon, board, player) == 0);
 
-                // To make can_amazon_move_here() function
-
-                if (canAmazonMoveHere(p, pAamazon, board)) 
-                {
-                    break;
-                }
-
-                }  
-
-                break;         
+                break;
             }
         }
     }
 
     // 4. Clean the old spot 
     board[pAamazon.y][pAamazon.x].playerID = 0;
+    board[pAamazon.y][pAamazon.x].artifact = 0;
     // 5. Move amazon to new position
     board[p.y][p.x].playerID = player;
     // 6. addScore()
@@ -82,19 +75,19 @@ void throwSpear(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE
         printf("Player %d threw his spear!\n", player);
 }
 
-void initMovement( Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
+void initMovement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
 
         int current_player = 1;
 
         while (1) {
         presentBoardState(board);
         EArtifact artifact = moveAmazon(current_player, board);
-        switch(artifact) {
+        switch(artifact){
             case BROKEN_ARROW:
                 switch_player(&current_player);
                 break;
             case SPEAR:
-                throwSpear(current_player, board);
+                throwSpear(current_player, board); 
                 switch_player(&current_player);
                 break;
             case HORSE:
