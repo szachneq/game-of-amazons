@@ -11,7 +11,10 @@ void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
 
     // To define limits of the significant artifacts
     // it is first row == border
+    int arrArtifact[10] = {0,0,0,0,0,1,2,2,3,3};
     
+    int arrValue[17] = {5,4,4,3,3,2,2,2,1,1,1,1,0,0,0,0,0};
+
    
     for (int column = 0; column < INTERNAL_BOARD_SIZE; column++) {
         board[0][column].playerID = 9;
@@ -19,8 +22,9 @@ void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
     for(int row = 1; row <= BOARD_SIZE; row++){
         board[row][0].playerID = 9; // it is first column = border
         for(int column = 1; column <= BOARD_SIZE; column++) {
-            board[column][row].value = (rand() % (5)); // Assigning random value from 0 - 5 
-            board[column][row].artifact = (rand() % (4)); // Assigning random value from 0 - 4
+
+            board[column][row].value = arrValue[rand()%17]; // Assigning random value from 0 - 5 
+            board[column][row].artifact = arrArtifact[rand() % 10]; // Assigning random value from 0 - 4
             board[column][row].playerID = 0; // Assigning 0 because all fields are unoccupied
         }
         board[row][INTERNAL_BOARD_SIZE-1].playerID = 9; // it is last column = border
