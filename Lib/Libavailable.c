@@ -41,6 +41,93 @@ int isDiagonall(position p, position pAamazon){
 int isPathClear(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], ERoadType type, int player) {
     
     // type is trip of amazon verticall(1), horizontall(2), diagonall (3)
+    switch(type)
+    {
+        case VERTICALL:
+            if((pAamazon.y - p.y) < 0){
+                for(int i=p.y; i<pAamazon.y; i++){
+                    if(board[i+1][pAamazon.x+1].playerID!=0){
+                        printf("There is an obstacle on the path\n");
+                        return 0;
+                    }
+                }
+            }else{
+                for(int i=pAamazon.y; i<p.y; i++){
+                    if(board[i+1][pAamazon.x+1].playerID!=0){
+                        printf("There is an obstacle on the path\n");
+                        return 0;
+                    }
+                }
+            }
+            break;
+        case HORIZONTALL:
+                                              printf("Goes here!\n");
+         printf("Px - %d, py - %d, PAx - %d, PAy - %d \n", p.x,p.y,pAamazon.x, pAamazon.y);
+
+            if((pAamazon.x - p.x) < 0){
+                for(int i=p.y; i<pAamazon.y; i++){
+                    if(board[pAamazon.y+1][i+1].playerID!=0){
+                        printf("There is an obstacle on the path\n");
+                        return 0;
+                    }
+                }
+            }else{
+                for(int i=pAamazon.y; i<=p.y; i++){
+                    if(board[pAamazon.y+1][i+1].playerID!=0){
+                        printf("There is an obstacle on the path\n");
+                        return 0;
+                    }
+                }
+            }
+            break;
+        case DIAGONALL:
+         printf("Px - %d, py - %d, PAx - %d, PAy - %d \n", p.x,p.y,pAamazon.x, pAamazon.y);
+            if((pAamazon.x - p.x) < 0){
+                if((pAamazon.y - p.y) < 0){
+                    
+                    for(int i=pAamazon.x; i < p.x; i++){
+                        int temp = 1;
+                        if(board[pAamazon.y+temp][pAamazon.x+temp].playerID!=0){
+                            printf("There is an obstacle on the path\n");
+                            return 0;
+                        }
+                        temp++;
+                    }
+                }else{
+                    for(int i=pAamazon.x; i < p.x; i++){
+                        int temp = 1;
+                        if(board[pAamazon.y-temp][pAamazon.x+temp].playerID!=0){
+                            printf("There is an obstacle on the path\n");
+                            return 0;
+                        }
+                        temp++;
+                    }  
+                }   
+            }else{
+                if((pAamazon.y - p.y) < 0){
+                    for(int i=p.x; i < pAamazon.x; i++){
+                        int temp = 1;
+                        if(board[pAamazon.y+temp][pAamazon.x-temp].playerID!=0){
+                            printf("There is an obstacle on the path\n");
+                            return 0;
+                        }
+                        temp++;
+                    }  
+                }else{
+                    for(int i=p.x; i < pAamazon.x; i++){
+                        int temp = 1;
+                        if(board[pAamazon.y-temp][pAamazon.x-temp].playerID!=0){
+                            printf("There is an obstacle on the path\n");
+                            return 0;
+                        }
+                        temp++;
+                    }
+                }
+            }
+            break;
+    }
+
+
     board[p.y][p.x].playerID = player;
     presentBoardState(board);
     return 1;
@@ -55,11 +142,10 @@ int canAmazonMoveHere(position p, position pAamazon, Field board[INTERNAL_BOARD_
     if(p.y == pAamazon.y){
         return isPathClear(p, pAamazon, board, (ERoadType)2, player);
         }
-    if(can_place_here(p, board)){
-        if(isDiagonall(p, pAamazon)){
-            isPathClear(p, pAamazon, board, (ERoadType)3, player);
-        }  
-    }
+    if(isDiagonall(p, pAamazon)){
+        return isPathClear(p, pAamazon, board, (ERoadType)3, player);
+    }  
+    
     return 0;
 }
 
