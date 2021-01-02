@@ -61,8 +61,8 @@ int isPathClear(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][
             }
             break;
         case HORIZONTALL:
-                                              printf("Goes here!\n");
-         printf("Px - %d, py - %d, PAx - %d, PAy - %d \n", p.x,p.y,pAamazon.x, pAamazon.y);
+        printf("Goes here!\n");
+        printf("Px - %d, py - %d, PAx - %d, PAy - %d \n", p.x,p.y,pAamazon.x, pAamazon.y);
 
             if((pAamazon.x - p.x) < 0){
                 for(int i=p.y; i<pAamazon.y; i++){
