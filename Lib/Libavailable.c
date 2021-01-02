@@ -129,7 +129,7 @@ int isPathClear(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][
 
 
     board[p.y][p.x].playerID = player;
-    presentBoardState(board);
+   
     return 1;
 
 }
