@@ -62,11 +62,22 @@ int main(int argc, char *argv[]) {
     fprintf(write_file, "\n");
   }
 
-  for (int index = 0; index < game.num_players-1; index++) {
-    fprintf(write_file, "%s %d %d\n", game.players[index].name, game.players[index].id, game.players[index].points);
-  }
+  // TODO
+  /* If there is no row with player’s name 
+  (at the beginning of the game) player must 
+  add a corresponding row at the end of the file, 
+  containing the name and setting consecutive player’s 
+  number as the ID and initial points set to 0. Otherwise, 
+  the player should alter his current score by the number 
+  of the collected points, and leave other fields unchanged. */
 
-  fprintf(write_file, "%s %d %d", game.players[game.num_players-1].name, game.players[game.num_players-1].id, game.players[game.num_players-1].points);
+  for (int index = 0; index < game.num_players; index++) {
+    if (index == game.num_players-1) {
+      fprintf(write_file, "%s %d %d\n", game.players[index].name, game.players[index].id, game.players[index].points);
+    } else {
+      fprintf(write_file, "%s %d %d", game.players[game.num_players-1].name, game.players[game.num_players-1].id, game.players[game.num_players-1].points);
+    }
+  }
 
   fclose(write_file);
 
