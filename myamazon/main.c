@@ -7,6 +7,9 @@
 #include "game.h"
 
 int main(int argc, char *argv[]) {
+
+  // start of game initialization
+
   Game game;
   char input_board_file_name[32];
   char output_board_file_name[32];
@@ -26,6 +29,8 @@ int main(int argc, char *argv[]) {
 
   fclose(file);
 
+  // end of game initialization
+
   for (int row = 1; row <= game.board.height; row++) {
     for (int column = 1; column <= game.board.width; column++) {
       Position p = { .x=column, .y=row };
@@ -37,6 +42,9 @@ int main(int argc, char *argv[]) {
   for (int i = 0; i < game.num_players; i++) {
     game.players[i].id, game.players[i].points = 420;
   }
+
+
+  // start of turning game state into file
 
   FILE *write_file = fopen(output_board_file_name, "w");
 
@@ -61,6 +69,8 @@ int main(int argc, char *argv[]) {
   fprintf(write_file, "%s %d %d", game.players[game.num_players-1].name, game.players[game.num_players-1].id, game.players[game.num_players-1].points);
 
   fclose(write_file);
+
+  // end of turning game state into file
 
   return PROGRAM_SUCCESS;
 }
