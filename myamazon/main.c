@@ -12,48 +12,55 @@ int main(int argc, char *argv[]) {
   char output_board_file_name[32];
 
   cli_parse(argc, argv, &game, input_board_file_name, output_board_file_name);
-  if (game.phase == PLACEMENT) {
-    printf("placement \n");
+
+  FILE *file = fopen(input_board_file_name, "r");
+
+  if (file == NULL) {
+    printf("Cannot open game state file \"%s\" \n", input_board_file_name);
+    return INPUT_FILE_ERROR;
   }
 
-  if (game.phase == MOVEMENT) {
-    printf("movement \n");
+  read_board_size(file, &game.board);
+  initialize_board(file, &game.board);
+  read_player_info(file, &game);
+
+  fclose(file);
+
+  for (int row = 1; row <= game.board.height; row++) {
+    for (int column = 1; column <= game.board.width; column++) {
+      Position p = { .x=column, .y=row };
+      Field *f = get_field(game.board, p);
+      f->player_id = 5;
+    }
   }
-  
-  printf("amazons: %d \n", game.amazons);
 
-  printf("Input board file name: %s \n", input_board_file_name);
-  printf("Output board file name: %s \n", output_board_file_name);
+  for (int i = 0; i < game.num_players; i++) {
+    game.players[i].id, game.players[i].points = 420;
+  }
 
-  // token = strtok_r(rest, "=", &rest);
-  // *width = atoi(token);
+  FILE *write_file = fopen(output_board_file_name, "w");
 
-  // for (int i = 0; i < argc; i++) {
-  //   printf("%s \n", argv[i]);
-  // }
+  fprintf(write_file, "%d %d\n", game.board.height, game.board.width);
 
-  // const char *file_name = argv[1];
-  // FILE *file = fopen(file_name, "r");
+  for (int row = 1; row <= game.board.height; row++) {
+    for (int column = 1; column <= game.board.width; column++) {
+      Position p = { .x=column, .y=row };
+      Field *f = get_field(game.board, p);
+      char token[4];
+      field_to_token(*f, token);
+      fprintf(write_file, "%s", token);
+      if (column < game.board.width) fprintf(write_file, " ");
+    }
+    fprintf(write_file, "\n");
+  }
 
-  // if (file == NULL) {
-  //   printf("Cannot open game state file \"%s\" \n", file_name);
-  //   return INPUT_FILE_ERROR;
-  // }
+  for (int index = 0; index < game.num_players-1; index++) {
+    fprintf(write_file, "%s %d %d\n", game.players[index].name, game.players[index].id, game.players[index].points);
+  }
 
-  // int height, width;
-  // read_board_size(file, &height, &width);
-  // printf("Height: %d \n", height);
-  // printf("Width: %d \n", width);
+  fprintf(write_file, "%s %d %d", game.players[game.num_players-1].name, game.players[game.num_players-1].id, game.players[game.num_players-1].points);
 
-  // Board board = create_board(height, width);
-  // printf("board height: %d \n", board.height);
-  // printf("board width: %d \n", board.width);
-
-  // board.fields[0].value = 10;
-
-  // printf("%d", board.fields[0].value);
-
-  // fclose(file);
+  fclose(write_file);
 
   return PROGRAM_SUCCESS;
 }

@@ -3,7 +3,7 @@ CFLAGS=-I.
 DEPS = board_entities.h
 OBJ = main.o board.o file_parser.o game.o cli_parser.o
 
-obj/%.o: %.c $(DEPS)
+%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 main: $(OBJ)

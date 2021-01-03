@@ -21,11 +21,23 @@ void cli_parse(int argc, char *argv[], Game *game, char input_board_file_name[32
   }
 
   if (game->phase == PLACEMENT) {
-    strncpy(input_board_file_name, argv[3], 32);
-    strncpy(output_board_file_name, argv[4], 32);
+    if (argc >= 5) {
+      strncpy(input_board_file_name, argv[3], 32);
+      strncpy(output_board_file_name, argv[4], 32);
+    } else {
+      printf("Insufficient amount of parameters \n");
+      printf("Please make sure that input and output filenames are provided \n");
+      exit(INTERNAL_ERROR);
+    }
   } else if (game->phase == MOVEMENT) {
-    strncpy(input_board_file_name, argv[2], 32);
-    strncpy(output_board_file_name, argv[3], 32);
+    if (argc >= 4) {
+      strncpy(input_board_file_name, argv[2], 32);
+      strncpy(output_board_file_name, argv[3], 32);
+    } else {
+      printf("Insufficient amount of parameters \n");
+      printf("Please make sure that input and output filenames are provided \n");
+      exit(INTERNAL_ERROR);
+    }
   }
 }
 

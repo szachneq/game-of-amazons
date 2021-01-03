@@ -11,7 +11,7 @@ typedef enum {
 typedef struct {
   int value;
   EArtifact artifact;  
-  int playerID;
+  int player_id;
 } Field;
 
 typedef struct {

@@ -6,7 +6,7 @@
 #define MAX_PLAYERS 8
 
 typedef struct {
-  char *name;
+  char name[16];
   int id;
   int points;
 } Player;
@@ -21,6 +21,7 @@ typedef struct {
   EPhase phase;
   Player players[MAX_PLAYERS];
   int amazons;
+  int num_players;
 } Game;
 
 #endif // GAME_H
