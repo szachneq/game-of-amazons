@@ -6,28 +6,24 @@
 #include "cli_parser.h"
 #include "game.h"
 
+
+
 int main(int argc, char *argv[]) {
 
-  // start of game initialization
 
   Game game;
   char input_board_file_name[32];
   char output_board_file_name[32];
+  int game_init_status;
 
-  cli_parse(argc, argv, &game, input_board_file_name, output_board_file_name);
+  // start of game initialization
 
-  FILE *file = fopen(input_board_file_name, "r");
+  game_init(argc, argv, &game, input_board_file_name,output_board_file_name, &game_init_status);
 
-  if (file == NULL) {
+  if ( game_init_status == INPUT_FILE_ERROR ){
     printf("Cannot open game state file \"%s\" \n", input_board_file_name);
     return INPUT_FILE_ERROR;
   }
-
-  read_board_size(file, &game.board);
-  initialize_board(file, &game.board);
-  read_player_info(file, &game);
-
-  fclose(file);
 
   // end of game initialization
 
@@ -46,41 +42,8 @@ int main(int argc, char *argv[]) {
 
   // start of turning game state into file
 
-  FILE *write_file = fopen(output_board_file_name, "w");
-
-  fprintf(write_file, "%d %d\n", game.board.height, game.board.width);
-
-  for (int row = 1; row <= game.board.height; row++) {
-    for (int column = 1; column <= game.board.width; column++) {
-      Position p = { .x=column, .y=row };
-      Field *f = get_field(game.board, p);
-      char token[4];
-      field_to_token(*f, token);
-      fprintf(write_file, "%s", token);
-      if (column < game.board.width) fprintf(write_file, " ");
-    }
-    fprintf(write_file, "\n");
-  }
-
-  // TODO
-  /* If there is no row with player’s name 
-  (at the beginning of the game) player must 
-  add a corresponding row at the end of the file, 
-  containing the name and setting consecutive player’s 
-  number as the ID and initial points set to 0. Otherwise, 
-  the player should alter his current score by the number 
-  of the collected points, and leave other fields unchanged. */
-
-  for (int index = 0; index < game.num_players; index++) {
-    if (index == game.num_players-1) {
-      fprintf(write_file, "%s %d %d\n", game.players[index].name, game.players[index].id, game.players[index].points);
-    } else {
-      fprintf(write_file, "%s %d %d", game.players[game.num_players-1].name, game.players[game.num_players-1].id, game.players[game.num_players-1].points);
-    }
-  }
-
-  fclose(write_file);
-
+  game_write_file(&game, output_board_file_name);
+  
   // end of turning game state into file
 
   return PROGRAM_SUCCESS;

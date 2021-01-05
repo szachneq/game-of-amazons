@@ -35,7 +35,7 @@ void tokenize_board_file(FILE *file, int height, int width, char tokens[][4]) {
 }
 
 // reads player info into game object
-void read_player_info(FILE *file, Game *game) {
+void read_player_info(FILE *file, Game *game, int *are_we_on_list) {
   rewind(file);
   char line[MAX_LINE_WIDTH];
   // skip to the part of the file which stores player info
@@ -57,6 +57,11 @@ void read_player_info(FILE *file, Game *game) {
     token = strtok_r(rest, " ", &rest);
     // printf("%s \n", token);
     game->players[index].points = atoi(token);
+
+    if(game->players[index].name == TEAM_NAME){
+      *are_we_on_list = 1;
+    }
+
     index++;
   }
 

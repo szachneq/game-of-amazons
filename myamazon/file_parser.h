@@ -13,6 +13,6 @@ void read_board_size(FILE *file, Board *board);
 
 void tokenize_board_file(FILE *file, int height, int width, char tokens[][4]);
 
-void read_player_info(FILE *file, Game *game);
+void read_player_info(FILE *file, Game *game, int *are_we_on_list);
 
 #endif // FILE_PARSER_H
