@@ -1,50 +1,73 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "board.h"
-#include "file_parser.h"
 #include "error_codes.h"
 #include "cli_parser.h"
 #include "game.h"
-
-
+#include "file_parser.h"
+#include "board_entities.h"
 
 int main(int argc, char *argv[]) {
+  // Code for autonomous mode
+  srand(time(NULL));
+  Game game = create_game(argc, argv);
 
-
-  Game game;
-  char input_board_file_name[32];
-  char output_board_file_name[32];
-  int game_init_status;
-
-  // start of game initialization
-
-  game_init(argc, argv, &game, input_board_file_name,output_board_file_name, &game_init_status);
-
-  if ( game_init_status == INPUT_FILE_ERROR ){
-    printf("Cannot open game state file \"%s\" \n", input_board_file_name);
-    return INPUT_FILE_ERROR;
+  if (game.phase == PLACEMENT) {
+    if (count_our_amazons(&game) >= game.amazons) {
+      printf("cant place more amazons, limit exceeded \n");
+      exit(MOVE_IMPOSSIBLE);
+    }
+    place_amazon_randomly(&game);
   }
 
-  // end of game initialization
-
-  for (int row = 1; row <= game.board.height; row++) {
-    for (int column = 1; column <= game.board.width; column++) {
-      Position p = { .x=column, .y=row };
-      Field *f = get_field(game.board, p);
-      f->player_id = 5;
+  if (game.phase == MOVEMENT) {
+    int our_id = get_our_id(&game);
+    Field *amazon_to_move = NULL;
+    Position amazon_position;
+    for (int row = 1; row <= game.board.height; row++) {
+      for (int column = 1; column <= game.board.width; column++) {
+        Position p = { .x = column, .y = row };
+        Field *f = get_field(game.board, p);
+        int can_move = 0;
+        if (f->player_id == our_id) {
+          for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+              Position r = { .x = column-1+j, .y = row-1+i };
+              Field *test = get_field(game.board, r);
+              if (test == NULL) continue;
+              if (test->player_id == 0) { 
+                can_move = 1;
+                amazon_position = p;
+              }
+            }
+          }
+        }
+        if (can_move == 1) {
+          amazon_to_move = f;
+          printf("Can move amazon \n");
+          printf("on position x:%d, y:%d \n", amazon_position.x, amazon_position.y);
+        }
+      }
     }
   }
 
-  for (int i = 0; i < game.num_players; i++) {
-    game.players[i].id, game.players[i].points = 420;
-  }
+  // Example code for automatic mode
+  // for (int row = 1; row <= game.board.height; row++) {
+  //   for (int column = 1; column <= game.board.width; column++) {
+  //     Position p = { .x=column, .y=row };
+  //     Field *f = get_field(game.board, p);
+  //     f->player_id = 5;
+  //   }
+  // }
 
+  // for (int i = 0; i < game.num_players; i++) {
+  //   game.players[i].id, game.players[i].points = 420;
+  // }
 
-  // start of turning game state into file
+  write_game_state(&game);
+  // End of autonomnous code
 
-  game_write_file(&game, output_board_file_name);
-  
-  // end of turning game state into file
-
-  return PROGRAM_SUCCESS;
+  exit(PROGRAM_SUCCESS);
 }

@@ -6,7 +6,7 @@
 #include "error_codes.h"
 #include "game.h"
 
-void cli_parse(int argc, char *argv[], Game *game, char input_board_file_name[32], char output_board_file_name[32]) {
+void cli_parse(int argc, char *argv[], Game *game) {
   
   if (strcmp(argv[1], "name") == 0) {
     printf("%s", "GROUP_E");
@@ -22,8 +22,8 @@ void cli_parse(int argc, char *argv[], Game *game, char input_board_file_name[32
 
   if (game->phase == PLACEMENT) {
     if (argc >= 5) {
-      strncpy(input_board_file_name, argv[3], 32);
-      strncpy(output_board_file_name, argv[4], 32);
+      strncpy(game->input_file_name, argv[3], 64);
+      strncpy(game->output_file_name, argv[4], 64);
     } else {
       printf("Insufficient amount of parameters \n");
       printf("Please make sure that input and output filenames are provided \n");
@@ -31,8 +31,8 @@ void cli_parse(int argc, char *argv[], Game *game, char input_board_file_name[32
     }
   } else if (game->phase == MOVEMENT) {
     if (argc >= 4) {
-      strncpy(input_board_file_name, argv[2], 32);
-      strncpy(output_board_file_name, argv[3], 32);
+      strncpy(game->input_file_name, argv[2], 64);
+      strncpy(game->output_file_name, argv[3], 64);
     } else {
       printf("Insufficient amount of parameters \n");
       printf("Please make sure that input and output filenames are provided \n");

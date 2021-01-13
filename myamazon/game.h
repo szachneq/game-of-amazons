@@ -4,7 +4,6 @@
 #include "board.h"
 
 #define MAX_PLAYERS 8
-#define TEAM_NAME "GROUP_E"
 
 typedef struct {
   char name[16];
@@ -23,10 +22,16 @@ typedef struct {
   Player players[MAX_PLAYERS];
   int amazons;
   int num_players;
+  char input_file_name[64];
+  char output_file_name[64];
 } Game;
 
-int game_init(int argc, char **argv, Game *game, char *input_board_file_name, char *output_board_file_name, int *game_init_status);
+Game create_game(int argc, char *argv[]);
 
-void game_write_file(Game *game, char *output_board_file_name);
+int count_our_amazons(Game *game);
+
+void place_amazon_randomly(Game *game);
+
+int get_our_id(Game *game);
 
 #endif // GAME_H
