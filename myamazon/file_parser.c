@@ -3,7 +3,22 @@
 #include <string.h>
 
 #include "file_parser.h"
+#include "error_codes.h"
 #include "game.h"
+
+void load_game_state(Game *game) {
+  FILE *file = fopen(game->input_file_name, "r");
+  if (file == NULL) {
+    printf("Cannot open game state file \"%s\" \n", game->input_file_name);
+    exit(INPUT_FILE_ERROR);
+  }
+
+  read_board_size(file, &game->board);
+  initialize_board(file, &game->board);
+  read_player_info(file, game);
+
+  fclose(file);
+}
 
 void read_board_size(FILE *file, Board *board) {
   rewind(file);
@@ -35,7 +50,7 @@ void tokenize_board_file(FILE *file, int height, int width, char tokens[][4]) {
 }
 
 // reads player info into game object
-void read_player_info(FILE *file, Game *game, int *are_we_on_list) {
+void read_player_info(FILE *file, Game *game) {
   rewind(file);
   char line[MAX_LINE_WIDTH];
   // skip to the part of the file which stores player info
@@ -44,26 +59,67 @@ void read_player_info(FILE *file, Game *game, int *are_we_on_list) {
     // printf("%s", line);
   }
 
+  // Load player information from the file
   char *token;
   int index = 0;
   while (fgets(line, MAX_LINE_WIDTH, file)) {
     char *rest = line;
     token = strtok_r(rest, " ", &rest);
-    // printf("%s \n", token);
     strcpy(game->players[index].name, token);
     token = strtok_r(rest, " ", &rest);
-    // printf("%s \n", token);
     game->players[index].id = atoi(token);
     token = strtok_r(rest, " ", &rest);
-    // printf("%s \n", token);
     game->players[index].points = atoi(token);
-
-    if(game->players[index].name == TEAM_NAME){
-      *are_we_on_list = 1;
-    }
-
     index++;
   }
-
   game->num_players = index;
+
+  // Check if our team is present on the list
+  int present = 0;
+  for (int i = 0; i < game->num_players; i++) {
+    if (strcmp(game->players[i].name, "GROUP_E") == 0) present = 1;
+  }
+  // if not present, add to player list
+  if (!present) {
+    strcpy(game->players[index].name, "GROUP_E");
+    game->players[index].id = index+1;
+    game->players[index].points = 0;
+    game->num_players += 1;
+  }
+}
+
+void write_game_state(Game *game) {
+  FILE *file = fopen(game->output_file_name, "w");
+
+  fprintf(file, "%d %d\n", game->board.height, game->board.width);
+
+  for (int row = 1; row <= game->board.height; row++) {
+    for (int column = 1; column <= game->board.width; column++) {
+      Position p = { .x=column, .y=row };
+      Field *f = get_field(game->board, p);
+      char token[4];
+      field_to_token(*f, token);
+      fprintf(file, "%s", token);
+      if (column < game->board.width) fprintf(file, " ");
+    }
+    fprintf(file, "\n");
+  }
+
+  for (int index = 0; index < game->num_players; index++) {
+    if (index == game->num_players-1) {
+      fprintf(file, "%s %d %d",
+        game->players[game->num_players-1].name,
+        game->players[game->num_players-1].id,
+        game->players[game->num_players-1].points
+      );
+    } else {
+      fprintf(file, "%s %d %d\n",
+        game->players[index].name,
+        game->players[index].id,
+        game->players[index].points
+      );
+    }
+  }
+
+  fclose(file);
 }

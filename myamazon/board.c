@@ -37,8 +37,8 @@ Field *get_field(Board board, Position position) {
                         position.y > board.height ||
                         position.y < 1;
   if (is_out_of_bounds) {
-    printf("Position provided to get field is out of bounds \n");
-    printf("x: %d, y: %d \n", position.x, position.y);
+    // printf("Position provided to get field is out of bounds \n");
+    // printf("x: %d, y: %d \n", position.x, position.y);
     return NULL;
   }
   int x = position.x - 1;

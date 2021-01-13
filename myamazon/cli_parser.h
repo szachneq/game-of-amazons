@@ -8,7 +8,7 @@
 #include "error_codes.h"
 #include "game.h"
 
-void cli_parse(int argc, char *argv[], Game *game, char input_board_file_name[32], char output_board_file_name[32]);
+void cli_parse(int argc, char *argv[], Game *game);
 
 EPhase read_phase(int argc, char *argv[]);
 
