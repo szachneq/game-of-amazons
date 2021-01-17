@@ -24,8 +24,9 @@ int main(int argc, char *argv[]) {
 
   if (game.phase == MOVEMENT) {
     int our_id = get_our_id(&game);
-    Field *amazon_to_move = NULL;
-    Position amazon_position;
+    Field *amazon_fields[20];
+    Position amazon_positions[20];
+    int found_amazons = 0;
     for (int row = 1; row <= game.board.height; row++) {
       for (int column = 1; column <= game.board.width; column++) {
         Position p = { .x = column, .y = row };
@@ -39,17 +40,20 @@ int main(int argc, char *argv[]) {
               if (test == NULL) continue;
               if (test->player_id == 0) { 
                 can_move = 1;
-                amazon_position = p;
+                amazon_positions[found_amazons] = p;
               }
             }
           }
         }
         if (can_move == 1) {
-          amazon_to_move = f;
-          printf("Can move amazon \n");
-          printf("on position x:%d, y:%d \n", amazon_position.x, amazon_position.y);
+          amazon_fields[found_amazons] = f;
+          found_amazons++;
         }
       }
+    }
+    printf("Found our movable amazons: \n");
+    for (int i = 0; i < found_amazons; i++) {
+      printf("Position x:%d, y:%d \n", amazon_positions[i].x, amazon_positions[i].y);
     }
   }
 
