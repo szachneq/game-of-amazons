@@ -71,24 +71,31 @@ int main(int argc, char *argv[]) {
     Position new_position;
     Field *new_field;
     int moved = 0;
-    for (int i = 0; i < 3; i++) {
-      for (int j = 0; j < 3; j++) {
-        Position r = { .x = amazon_positions[index].x-1+j, .y = amazon_positions[index].y-1+i };
-        Field *test = get_field(game.board, r);
-        if (test == NULL) continue;
-        if (test->player_id == 0 && !moved) {
-          old_field->player_id = 0;
-          new_position.x = r.x;
-          new_position.y = r.y;
-          new_field = get_field(game.board, new_position);
-          new_field->player_id = our_id;
-          moved = 1;
-        }
+    while (!moved) {
+      int x_dir = (rand() % 3) - 1;
+      int y_dir = (rand() % 3) - 1;
+      Position r = { .x = amazon_positions[index].x+x_dir, .y = amazon_positions[index].y+y_dir };
+      Field *test = get_field(game.board, r);
+      if (test == NULL) continue;
+      if (test->player_id == 0) {
+        old_field->player_id = 0;
+        new_position.x = r.x;
+        new_position.y = r.y;
+        new_field = get_field(game.board, new_position);
+        new_field->player_id = our_id;
+        game.players[our_id-1].points += new_field->value;
+        new_field->value = 0;
+        moved = 1;
       }
     }
 
-    printf("Moved from x:%d, y:%d \n", old_position.x, old_position.y);
-    printf("To x:%d, y:%d \n", new_position.x, new_position.y);
+    if (new_field->artifact == NONE || new_field->artifact == SPEAR) {
+      old_field->player_id = 9;
+    } else if (new_field->artifact == BROKEN_ARROW) {
+      // just do nothing
+    } else if (new_field->artifact == HORSE) {
+      // here the fun begins
+    }
   }
 
   // Example code for automatic mode
