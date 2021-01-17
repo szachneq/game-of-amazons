@@ -51,10 +51,44 @@ int main(int argc, char *argv[]) {
         }
       }
     }
+
+    if (found_amazons < 1) {
+      printf("Cant move any amazon \n");
+      exit(MOVE_IMPOSSIBLE);
+    }
+
     printf("Found our movable amazons: \n");
     for (int i = 0; i < found_amazons; i++) {
       printf("Position x:%d, y:%d \n", amazon_positions[i].x, amazon_positions[i].y);
     }
+    
+    int index = rand() % found_amazons; // randomly choose amazon to move
+
+    // loop through fields around chosen amazon
+    // when a field is available move to it
+    Position old_position = amazon_positions[index];
+    Field *old_field = get_field(game.board, old_position);
+    Position new_position;
+    Field *new_field;
+    int moved = 0;
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        Position r = { .x = amazon_positions[index].x-1+j, .y = amazon_positions[index].y-1+i };
+        Field *test = get_field(game.board, r);
+        if (test == NULL) continue;
+        if (test->player_id == 0 && !moved) {
+          old_field->player_id = 0;
+          new_position.x = r.x;
+          new_position.y = r.y;
+          new_field = get_field(game.board, new_position);
+          new_field->player_id = our_id;
+          moved = 1;
+        }
+      }
+    }
+
+    printf("Moved from x:%d, y:%d \n", old_position.x, old_position.y);
+    printf("To x:%d, y:%d \n", new_position.x, new_position.y);
   }
 
   // Example code for automatic mode
