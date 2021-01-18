@@ -92,15 +92,10 @@ void switch_playerPrime(int *current_player)
 
 void placeAmazon(int player, position p,  Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
   board[p.y][p.x].playerID = player;
+  board[p.y][p.x].value = 0;
+  board[p.y][p.x].artifact = 0;
   presentBoardState(board);
 }
-
-void addScore(int value, int player){
-
-    // addScore() summ player score
-
-}
-
 
 void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
     

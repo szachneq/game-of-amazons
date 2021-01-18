@@ -35,7 +35,7 @@ int isDiagonall(position p, position pAamazon){
     int xCor = abs(p.x - pAamazon.x);
     int yCor = abs(p.y - pAamazon.y);
 
-    return (xCor = yCor) ? 1 : 0;
+    return (xCor == yCor) ? 1 : 0;
 }
 
 int isPathClear(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], ERoadType type, int player) {
@@ -44,16 +44,19 @@ int isPathClear(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][
     switch(type)
     {
         case VERTICALL:
+
+        printf("ten");
+        presentBoardState(board);
             if((pAamazon.y - p.y) < 0){
-                for(int i=p.y; i<pAamazon.y; i++){
-                    if(board[i+1][pAamazon.x+1].playerID!=0){
+                for(int i=pAamazon.y; i<=p.y; i++){
+                    if(board[i+1][pAamazon.x].playerID!=0){
                         printf("There is an obstacle on the path\n");
                         return 0;
                     }
                 }
             }else{
-                for(int i=pAamazon.y; i<p.y; i++){
-                    if(board[i+1][pAamazon.x+1].playerID!=0){
+                for(int i=p.y; i<pAamazon.y; i++){
+                    if(board[i][pAamazon.x].playerID!=0){
                         printf("There is an obstacle on the path\n");
                         return 0;
                     }
@@ -65,15 +68,15 @@ int isPathClear(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][
         printf("Px - %d, py - %d, PAx - %d, PAy - %d \n", p.x,p.y,pAamazon.x, pAamazon.y);
 
             if((pAamazon.x - p.x) < 0){
-                for(int i=p.y; i<pAamazon.y; i++){
-                    if(board[pAamazon.y+1][i+1].playerID!=0){
+                for(int i=pAamazon.x; i<p.x; i++){
+                    if(board[pAamazon.y][i+1].playerID!=0){
                         printf("There is an obstacle on the path\n");
                         return 0;
                     }
                 }
             }else{
-                for(int i=pAamazon.y; i<=p.y; i++){
-                    if(board[pAamazon.y+1][i+1].playerID!=0){
+                for(int i=p.x; i<=pAamazon.x; i++){
+                    if(board[pAamazon.y][i+1].playerID!=0){
                         printf("There is an obstacle on the path\n");
                         return 0;
                     }
@@ -126,10 +129,7 @@ int isPathClear(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][
             }
             break;
     }
-
-
-    board[p.y][p.x].playerID = player;
-   
+  
     return 1;
 
 }
@@ -143,9 +143,14 @@ int canAmazonMoveHere(position p, position pAamazon, Field board[INTERNAL_BOARD_
         return isPathClear(p, pAamazon, board, (ERoadType)2, player);
         }
     if(isDiagonall(p, pAamazon)){
+    printf("If Horse, p.x - %d, p.y - %d, pAamazon.y - %d , pAamazon.x - %d \n", p.x,p.y, pAamazon.y, pAamazon.x);
+        
+        printf("testDiaf=gonal");
         return isPathClear(p, pAamazon, board, (ERoadType)3, player);
     }  
     
+    printf("Amazon can only shoot vertically, horizontally and diagonally\n");
+
     return 0;
 }
 
@@ -166,15 +171,6 @@ int can_place_here(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_S
         printf("Sucessful placement\n");
       return 1;
 }
-
-int isThrowArrow(int isArrow) {
-    // vertically, horizontally, diagonally from amazon + obsticles
-    if(isArrow == 0){
-        return 1;
-    }else{
-        return 0;
-    }
-};
 
 int isThrowSpear(int isSpear) {
     // vertically, horizontally, diagonally from amazon

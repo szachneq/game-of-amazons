@@ -22,7 +22,7 @@ int main() {
 
     init_placement(g_board);
 
-    initMovement(g_board);
+    initMovement(g_board, g_scores);
 
     int winner = 0;
     if (g_scores[0] > g_scores[1]) winner = 1;
