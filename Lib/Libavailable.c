@@ -11,8 +11,21 @@ int isMovePossible(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int pl
     // 2. For at least one amaznon if there is an unoccupied field n*canAmazonMove()
     // Ask if one player can play if the other cannot move?
     // 3. Return result
+    for(int i = 1; i< 11; i++){
+        for(int j = 1; j< 11; j++){
 
-    return 1;
+            position p = {.x= i, .y=j};
+            if(board[p.y][p.x].playerID == player){
+                if(canAmazonMove(p ,board)){
+                    return 1;
+                }
+            }
+
+        }
+    }
+
+
+    return 0;
 }
 
 int canAmazonMove(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
@@ -20,12 +33,12 @@ int canAmazonMove(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SI
     // and returns whether it can move
     int can_move = 0;
     if (board[p.y-1][p.x-1].playerID == 0) { can_move = 1; }
-    if (board[p.y-1][p.x].playerID   == 0)   { can_move = 1; }
     if (board[p.y-1][p.x+1].playerID == 0) { can_move = 1; }
-    if (board[p.y][p.x-1].playerID   == 0)   { can_move = 1; }
-    if (board[p.y][p.x+1].playerID   == 0)   { can_move = 1; }
+    if (board[p.y][p.x-1].playerID   == 0) { can_move = 1; }
+    if (board[p.y][p.x+1].playerID   == 0) { can_move = 1; }
+    if (board[p.y-1][p.x].playerID   == 0) { can_move = 1; }
+    if (board[p.y+1][p.x].playerID   == 0) { can_move = 1; }
     if (board[p.y+1][p.x-1].playerID == 0) { can_move = 1; }
-    if (board[p.y+1][p.x].playerID   == 0)   { can_move = 1; }
     if (board[p.y+1][p.x+1].playerID == 0) { can_move = 1; }
 
     return can_move;
@@ -44,9 +57,6 @@ int isPathClear(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][
     switch(type)
     {
         case VERTICALL:
-
-        printf("ten");
-        presentBoardState(board);
             if((pAamazon.y - p.y) < 0){
                 for(int i=pAamazon.y; i<=p.y; i++){
                     if(board[i+1][pAamazon.x].playerID!=0){
@@ -64,19 +74,16 @@ int isPathClear(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][
             }
             break;
         case HORIZONTALL:
-        printf("Goes here!\n");
-        printf("Px - %d, py - %d, PAx - %d, PAy - %d \n", p.x,p.y,pAamazon.x, pAamazon.y);
-
             if((pAamazon.x - p.x) < 0){
-                for(int i=pAamazon.x; i<p.x; i++){
+                for(int i=pAamazon.x; i<=p.x; i++){
                     if(board[pAamazon.y][i+1].playerID!=0){
                         printf("There is an obstacle on the path\n");
                         return 0;
                     }
                 }
             }else{
-                for(int i=p.x; i<=pAamazon.x; i++){
-                    if(board[pAamazon.y][i+1].playerID!=0){
+                for(int i=p.x; i<pAamazon.x; i++){
+                    if(board[pAamazon.y][i].playerID!=0){
                         printf("There is an obstacle on the path\n");
                         return 0;
                     }
@@ -84,7 +91,6 @@ int isPathClear(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][
             }
             break;
         case DIAGONALL:
-         printf("Px - %d, py - %d, PAx - %d, PAy - %d \n", p.x,p.y,pAamazon.x, pAamazon.y);
             if((pAamazon.x - p.x) < 0){
                 if((pAamazon.y - p.y) < 0){
                     
@@ -143,10 +149,30 @@ int canAmazonMoveHere(position p, position pAamazon, Field board[INTERNAL_BOARD_
         return isPathClear(p, pAamazon, board, (ERoadType)2, player);
         }
     if(isDiagonall(p, pAamazon)){
-    printf("If Horse, p.x - %d, p.y - %d, pAamazon.y - %d , pAamazon.x - %d \n", p.x,p.y, pAamazon.y, pAamazon.x);
-        
-        printf("testDiaf=gonal");
         return isPathClear(p, pAamazon, board, (ERoadType)3, player);
+    }  
+    
+    printf("Amazon can only shoot vertically, horizontally and diagonally\n");
+
+    return 0;
+}
+
+int canAmazonThrowSpearHere(position p, position pAamazon, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player) {
+    // cheack vertically, horizontally, diagonally from amazon if amazon can move and of the field is free
+    if(p.x == pAamazon.x){
+        if(board[p.y][p.x].playerID == 0){
+            return 1;
+        }    
+    }
+    if(p.y == pAamazon.y){
+        if(board[p.y][p.x].playerID == 0){
+            return 1;
+        } 
+    }
+    if(isDiagonall(p, pAamazon)){
+        if(board[p.y][p.x].playerID == 0){
+            return 1;
+        } 
     }  
     
     printf("Amazon can only shoot vertically, horizontally and diagonally\n");

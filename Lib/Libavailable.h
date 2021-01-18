@@ -5,4 +5,5 @@ int isMovePossible(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int pl
 int isThrowSpear(int isSpear);
 int canAmazonMove(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
 int canAmazonMoveHere(position p, position pAamazon,Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player);
+int canAmazonThrowSpearHere(position p, position pAamazon,Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player);
 #endif

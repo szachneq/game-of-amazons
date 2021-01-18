@@ -74,7 +74,6 @@ void switch_player(int *current_player, Field board[INTERNAL_BOARD_SIZE][INTERNA
     else{ 
         *current_player = 1;
         }
-        presentBoardState(board);
 }
 //potrzebne jest też
 void switch_playerPrime(int *current_player) 
@@ -94,7 +93,6 @@ void placeAmazon(int player, position p,  Field board[INTERNAL_BOARD_SIZE][INTER
   board[p.y][p.x].playerID = player;
   board[p.y][p.x].value = 0;
   board[p.y][p.x].artifact = 0;
-  presentBoardState(board);
 }
 
 void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
@@ -112,6 +110,7 @@ void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
         
         position p = { .x=0, .y=0 };
         while (1) {
+            presentBoardState(board);
             printf("Player %d, input coordinates for amazon (x, y): ", player_id);
             scanf("%d %d", &p.x, &p.y);
             if (can_place_here(p, board)) break;

@@ -11,8 +11,6 @@ position pAamazon;
 
 EArtifact chooseAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int* g_scores)
 {   
-
-    presentBoardState(board);
     while (!g_isHorse) 
     {
         do{
@@ -31,9 +29,7 @@ EArtifact chooseAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOA
     }
     if(g_isHorse) 
     {       
-        printf("Horse 0\n");
         g_isHorse = 0;
-        printf("board is - %d, curr playerId - %d, pAamazon.y - %d , pAamazon.x - %d \n", board[pAamazon.y][pAamazon.x].playerID, player, pAamazon.y, pAamazon.x);     
         return moveAmazon(player, board, g_scores);
     }
 
@@ -59,8 +55,6 @@ EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD
 
                 
     // 4. Clean the old spot
-    printf("correctAmazon.y - %d ,correctAmazon.x - %d\n", correctAmazon.y, correctAmazon.x); 
-    printf("pAamazon.y - %d ,pAamazon.x - %d\n", pAamazon.y, pAamazon.x); 
     board[pAamazon.y][pAamazon.x].playerID = 0;
     board[pAamazon.y][pAamazon.x].artifact = 0;
     board[pAamazon.y][pAamazon.x].value = 0;
@@ -77,27 +71,17 @@ EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD
     // 6. addScore()
     addScore(board[p.y][p.x].value, player, g_scores);
 
-
-
-    // 7. Return artifact form new spot
-
-    printf("If Horse, p.x - %d, p.y - %d, pAamazon.y - %d , pAamazon.x - %d \n", p.x,p.y, pAamazon.y, pAamazon.x);
-
     // Clear new spot
     board[p.y][p.x].value = 0;
     board[p.y][p.x].artifact = 0;
 
-    presentBoardState(board);
 
     return currFieldArtifact;
 
 }
 
 void addScore(int value, int player, int* g_scores){
-
     g_scores[player-1] += value;
-    // addScore() summ player score
-
 }
 
 void shootArrow(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
@@ -118,26 +102,23 @@ void shootArrow(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE
         }while(1);
 
         printf("Player %d shoot his arrow!\n", player);
-        presentBoardState(board);
 }
 
 void throwSpear(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
 
-     int a,b;
-	    printf("Player %d, enter coordinates to shoot an spear\n", player);
-    
-		scanf(" %d %d", &a, &b);
+    position spear;
+        do{
+	        printf("Player %d, enter coordinates to shoot an spear", player);
+		    scanf("%d %d", &spear.x, &spear.y);
 
-        // Edit function canAmazonMoveHere to make spear work
-
-        if(isThrowSpear(board[b][a].playerID))
-        {
-            board[b][a].playerID = 9;        
-            board[b][a].value = 0;        
-            board[b][a].artifact = 0;          
-        }
+            if(canAmazonThrowSpearHere( spear, pAamazon, board, player)){
+            board[spear.y][spear.x].playerID = 9;        
+            board[spear.y][spear.x].value = 0;        
+            board[spear.y][spear.x].artifact = 0;  
+            break;
+            }
+        }while(1);
         printf("Player %d threw his spear!\n", player);
-        presentBoardState(board);
 }
 
 void initMovement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int* g_scores) 
@@ -147,7 +128,9 @@ void initMovement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int* g_
 
         while (1) 
         {
-             
+                if (!isMovePossible(board ,current_player)) break;
+
+                presentBoardState(board);
                 EArtifact artifact = chooseAmazon(current_player, board, g_scores);
 
                 switch(artifact)
@@ -156,14 +139,17 @@ void initMovement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int* g_
                         switch_player(&current_player,board);
                         break;
                     case SPEAR:
-                        switch_player(&current_player,board);
+                        presentBoardState(board);
                         throwSpear(current_player, board);
+                        switch_player(&current_player,board);
                         break; 
                     case HORSE:
+                        presentBoardState(board);
                         shootArrow(current_player, board);
                         g_isHorse = 1;
                         break;
                     case NONE:
+                        presentBoardState(board);
                         shootArrow(current_player, board);
                         switch_player(&current_player,board);
                         break;
