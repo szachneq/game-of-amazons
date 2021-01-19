@@ -8,10 +8,7 @@
 #include <time.h>
 #include "Variables.h"
 
-Field g_board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE];
-
-int g_scores[2] = { 0, 0 };
-
+Game game;
 
 #include "Libavailable.h"
 #include "Libinteractive.h"
@@ -20,13 +17,13 @@ int g_scores[2] = { 0, 0 };
 int main() {
     srand(time(0)); 
 
-    init_placement(g_board);
+    init_placement(&game);
 
-    initMovement(g_board, g_scores);
+    init_movement(&game);
 
     int winner = 0;
-    if (g_scores[0] > g_scores[1]) winner = 1;
-    if (g_scores[0] < g_scores[1]) winner = 2;
+    if (game.g_scores[0] > game.g_scores[1]) winner = 1;
+    if (game.g_scores[0] < game.g_scores[1]) winner = 2;
 
     if (winner) {
         printf("Player %d won! \n", winner);

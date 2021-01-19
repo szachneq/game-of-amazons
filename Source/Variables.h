@@ -30,5 +30,14 @@ typedef struct {
   int y;
 } position;
 
+typedef struct{
+    Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE];
+    position p;
+    position pAmazon;
+    int current_player;
+    int g_is_horse;
+    int g_scores[2];
+}Game;
+
 
 #endif

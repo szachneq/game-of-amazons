@@ -6,31 +6,30 @@
 #include "Libinteractive.h"
 
 int g_isHorse;
-position pAamazon;
 
 
-EArtifact chooseAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int* g_scores)
+EArtifact choose_amazon(Game *game)
 {   
-    while (!g_isHorse) 
+    while (!game->g_is_horse) 
     {
         do{
-        printf("Player %d, input coordinates for amazon that you want to move (x, y): ", player);
-        scanf("%d %d", &pAamazon.x, &pAamazon.y);
-            if(board[pAamazon.y][pAamazon.x].playerID != player) 
+        printf("Player %d, input coordinates for amazon that you want to move (x, y): ", game->current_player);
+        scanf("%d %d", &game->pAmazon.x, &game->pAmazon.y);
+            if(game->board[game->pAmazon.y][game->pAmazon.x].playerID != game->current_player) 
             {
                 printf("Hmmm, missclick?\n");
             }
-        }while(board[pAamazon.y][pAamazon.x].playerID != player);
+        }while(game->board[game->pAmazon.y][game->pAmazon.x].playerID != game->current_player);
 
-            if((board[pAamazon.y][pAamazon.x].playerID == player) && canAmazonMove(pAamazon, board)) 
+            if((game->board[game->pAmazon.y][game->pAmazon.x].playerID == game->current_player) && can_amazon_move(game)) 
             {
-                return moveAmazon(player, board, g_scores);
+                return move_amazon(game);
             }
     }
-    if(g_isHorse) 
+    if(game->g_is_horse) 
     {       
-        g_isHorse = 0;
-        return moveAmazon(player, board, g_scores);
+        game->g_is_horse = 0;
+        return move_amazon(game);
     }
 
 
@@ -39,122 +38,119 @@ EArtifact chooseAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOA
 
 }
 
-EArtifact moveAmazon(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int *g_scores) {
+EArtifact move_amazon(Game *game) {
  
     EArtifact currFieldArtifact;
 
-    // 1. Input spot to move to 
-        position correctAmazon = pAamazon;
-        position p = {.x= 0, .y=0};
-        
-        do
-        {
-            printf("Player %d, input coordinates for amazon to move (x, y): ", player);
-            scanf("%d %d", &p.x, &p.y);
-        } while(canAmazonMoveHere(p, correctAmazon, board, player) == 0);
+    do
+    {
+        printf("Player %d, input coordinates for amazon to move (x, y): ", game->current_player);
+        scanf("%d %d", &game->p.x, &game->p.y);
+    } while(can_amazon_move_here(game) == 0);
 
                 
     // 4. Clean the old spot
-    board[pAamazon.y][pAamazon.x].playerID = 0;
-    board[pAamazon.y][pAamazon.x].artifact = 0;
-    board[pAamazon.y][pAamazon.x].value = 0;
+    game->board[game->pAmazon.y][game->pAmazon.x].playerID = 0;
+    game->board[game->pAmazon.y][game->pAmazon.x].artifact = 0;
+    game->board[game->pAmazon.y][game->pAmazon.x].value = 0;
 
     // 5. Move amazon to new position
-    board[p.y][p.x].playerID = player;
+    game->board[game->p.y][game->p.x].playerID = game->current_player;
 
-    currFieldArtifact = (EArtifact) board[p.y][p.x].artifact;
+    currFieldArtifact = (EArtifact) game->board[game->p.y][game->p.x].artifact;
     // 5.1 update amazon position
 
-    pAamazon = p;
+    game->pAmazon = game->p;
 
 
-    // 6. addScore()
-    addScore(board[p.y][p.x].value, player, g_scores);
+    // 6. add_score()
+    add_score(game);
 
     // Clear new spot
-    board[p.y][p.x].value = 0;
-    board[p.y][p.x].artifact = 0;
+    game->board[game->p.y][game->p.x].value = 0;
+    game->board[game->p.y][game->p.x].artifact = 0;
 
 
     return currFieldArtifact;
 
 }
 
-void addScore(int value, int player, int* g_scores){
-    g_scores[player-1] += value;
+void add_score(Game *game){
+    game->g_scores[game->current_player - 1] += game->board[game->pAmazon.y][game->pAmazon.x].value;
 }
 
-void shootArrow(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
+void shootArrow(Game *game) {
 
     // shoot arrow code
-        position arrow;
 
         do{
-	        printf("Player %d, enter coordinates to shoot an arrow (x, y):", player);
-		    scanf("%d %d", &arrow.x, &arrow.y);
+	        printf("Player %d, enter coordinates to shoot an arrow (x, y):", game->current_player);
+		    scanf("%d %d", &game->p.x, &game->p.y);
 
-            if(canAmazonMoveHere( arrow, pAamazon, board, player)){
-            board[arrow.y][arrow.x].playerID = 9;        
-            board[arrow.y][arrow.x].value = 0;        
-            board[arrow.y][arrow.x].artifact = 0;  
+            if(can_amazon_move_here(game)){
+            game->board[game->p.y][game->p.x].playerID = 9;        
+            game->board[game->p.y][game->p.x].value = 0;        
+            game->board[game->p.y][game->p.x].artifact = 0;  
             break;
             }
         }while(1);
 
-        printf("Player %d shoot his arrow!\n", player);
+        printf("Player %d shoot his arrow!\n", game->current_player);
 }
 
-void throwSpear(int player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
+void throw_spear(Game *game) {
 
-    position spear;
         do{
-	        printf("Player %d, enter coordinates to shoot an spear", player);
-		    scanf("%d %d", &spear.x, &spear.y);
+	        printf("Player %d, enter coordinates to shoot an spear", game->current_player);
+		    scanf("%d %d", &game->p.x, &game->p.y);
 
-            if(canAmazonThrowSpearHere( spear, pAamazon, board, player)){
-            board[spear.y][spear.x].playerID = 9;        
-            board[spear.y][spear.x].value = 0;        
-            board[spear.y][spear.x].artifact = 0;  
+            if(can_amazon_throw_spear_here(game)){
+            game->board[game->p.y][game->p.x].playerID = 9;        
+            game->board[game->p.y][game->p.x].value = 0;        
+            game->board[game->p.y][game->p.x].artifact = 0;  
             break;
             }
         }while(1);
-        printf("Player %d threw his spear!\n", player);
+        printf("Player %d threw his spear!\n", game->current_player);
 }
 
-void initMovement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int* g_scores) 
+void init_movement(Game *game) 
 {
 
-        int current_player = 1;
+        game->current_player = 1;
 
         while (1) 
         {
-                if (!isMovePossible(board ,current_player)) break;
+                if (!is_move_possible(game)) break;
 
-                presentBoardState(board);
-                EArtifact artifact = chooseAmazon(current_player, board, g_scores);
+                present_board_state(game);
+                EArtifact artifact = choose_amazon(game);
 
                 switch(artifact)
                 {
                     case BROKEN_ARROW:
-                        switch_player(&current_player,board);
+                        switch_player(&game->current_player);
                         break;
                     case SPEAR:
-                        presentBoardState(board);
-                        throwSpear(current_player, board);
-                        switch_player(&current_player,board);
+                        present_board_state(game);
+                        throw_spear(game);
+                        switch_player(&game->current_player);
                         break; 
                     case HORSE:
-                        presentBoardState(board);
-                        shootArrow(current_player, board);
+                        present_board_state(game);
+                        shootArrow(game);
                         g_isHorse = 1;
                         break;
                     case NONE:
-                        presentBoardState(board);
-                        shootArrow(current_player, board);
-                        switch_player(&current_player,board);
+                        present_board_state(game);
+                        shootArrow(game);
+                        switch_player(&game->current_player);
                         break;
                 }
         
-                if (!isMovePossible(board ,current_player)) break;
+                if (!is_move_possible(game)) break;
+                switch_player(&game->current_player);
+                if (!is_move_possible(game)) break;
+                switch_player(&game->current_player);
         }   
 }

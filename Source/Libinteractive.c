@@ -6,7 +6,7 @@
 #include "Libavailable.h"
 #include "Libmovement.h"
 
-void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
+void generate_board(Game *game) {
     printf("Generating game board...\n");
 
     // To define limits of the significant artifacts
@@ -17,27 +17,27 @@ void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
 
    
     for (int column = 0; column < INTERNAL_BOARD_SIZE; column++) {
-        board[0][column].playerID = 9;
+        game->board[0][column].playerID = 9;
     }
     for(int row = 1; row <= BOARD_SIZE; row++){
-        board[row][0].playerID = 9; // it is first column = border
+        game->board[row][0].playerID = 9; // it is first column = border
         for(int column = 1; column <= BOARD_SIZE; column++) {
 
-            board[column][row].value = arrValue[rand()%17]; // Assigning random value from 0 - 5 
-            board[column][row].artifact = arrArtifact[rand() % 10]; // Assigning random value from 0 - 4
-            board[column][row].playerID = 0; // Assigning 0 because all fields are unoccupied
+            game->board[column][row].value = arrValue[rand()%17]; // Assigning random value from 0 - 5 
+            game->board[column][row].artifact = arrArtifact[rand() % 10]; // Assigning random value from 0 - 4
+            game->board[column][row].playerID = 0; // Assigning 0 because all fields are unoccupied
         }
-        board[row][INTERNAL_BOARD_SIZE-1].playerID = 9; // it is last column = border
+        game->board[row][INTERNAL_BOARD_SIZE-1].playerID = 9; // it is last column = border
     }
     // it is last row = border
     for (int column = 0; column < INTERNAL_BOARD_SIZE; column++) {
-        board[INTERNAL_BOARD_SIZE-1][column].playerID = 9;
+        game->board[INTERNAL_BOARD_SIZE-1][column].playerID = 9;
     }
 
     printf("Board generated!\n");
 }
 
-void presentBoardState(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
+void present_board_state(Game *game) {
     // print the state of the board in console
     for(int row = 0; row <= BOARD_SIZE; row++) {
         for(int column = 0; column <= BOARD_SIZE; column++) {
@@ -54,7 +54,7 @@ void presentBoardState(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
                 }
             }
             if (row > 0 && column > 0) {
-                printf("| %d %d %d ", board[row][column].value, board[row][column].artifact, board[row][column].playerID);
+                printf("| %d %d %d ", game->board[row][column].value, game->board[row][column].artifact, game->board[row][column].playerID);
             }
         }
         if(row == 0) { 
@@ -63,45 +63,35 @@ void presentBoardState(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
             printf(" |\n");
         }        
     }
+    printf("Score: Player1 - %d, Player2 - %d\n", game->g_scores[0], game->g_scores[1]);
 }
 
-void switch_player(int *current_player, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) 
+void switch_player(int *current_player) 
 {
     if (*current_player == 1)
     { 
         *current_player = 2;
-        }
+    }
     else{ 
         *current_player = 1;
-        }
-}
-//potrzebne jest też
-void switch_playerPrime(int *current_player) 
-{
-    if (*current_player == 1)
-    { 
-        *current_player = 2;
-        }
-    else{ 
-        *current_player = 1;
-        }
-        
+    }
 }
 
 
-void placeAmazon(int player, position p,  Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]) {
-  board[p.y][p.x].playerID = player;
-  board[p.y][p.x].value = 0;
-  board[p.y][p.x].artifact = 0;
+
+void place_amazon(Game *game, int player) {
+  game->board[game->p.y][game->p.x].playerID = player;
+  game->board[game->p.y][game->p.x].value = 0;
+  game->board[game->p.y][game->p.x].artifact = 0;
 }
 
-void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
+void init_placement(Game *game) {
     
     int amazons = 0;
     int player_id = 1;
-    generateBoard(board);
+    generate_board(game);
 
-    presentBoardState(board);
+    present_board_state(game);
 
     printf("Input amount of the amazons: ");
 
@@ -110,13 +100,13 @@ void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE] ) {
         
         position p = { .x=0, .y=0 };
         while (1) {
-            presentBoardState(board);
+            present_board_state(game);
             printf("Player %d, input coordinates for amazon (x, y): ", player_id);
-            scanf("%d %d", &p.x, &p.y);
-            if (can_place_here(p, board)) break;
+            scanf("%d %d", &game->p.x, &game->p.y);
+            if (can_place_here(game)) break;
         }
-        placeAmazon(player_id, p, board);
+        place_amazon(game, player_id);
         
-        switch_playerPrime(&player_id);
+        switch_player(&player_id);
     }
 }

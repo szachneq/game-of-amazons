@@ -1,9 +1,8 @@
 #ifndef Libavailable_H_INCLUDED
 #define Libavailable_H_INCLUDED
 #include "Variables.h"
-int isMovePossible(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player);
-int isThrowSpear(int isSpear);
-int canAmazonMove(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
-int canAmazonMoveHere(position p, position pAamazon,Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player);
-int canAmazonThrowSpearHere(position p, position pAamazon,Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE], int player);
+int is_move_possible(Game *game);
+int can_amazon_move(Game *game);
+int can_amazon_move_here(Game *game);
+int can_amazon_throw_spear_here(Game *game);
 #endif

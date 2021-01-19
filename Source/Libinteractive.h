@@ -5,13 +5,13 @@
 #include <time.h>
 #include "Variables.h"
 
-void generateBoard(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
-void presentBoardState(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
-void switch_playerPrime(int *current_player);
-void placeAmazon(int player_id, position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
-int can_place_here(position p, Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
-void init_placement(Field board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE]);
-void addScore(int value, int player, int* g_score);
+void generate_board(Game *game);
+void present_board_state(Game *game);
+void switch_player(int *current_player);
+void place_amazon(Game *game, int player);
+int can_place_here(Game *game);
+void init_placement(Game *game);
+void add_score(Game *game);
     
 
 #endif
