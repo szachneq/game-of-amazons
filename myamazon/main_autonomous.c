@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
         moved = 1;
       }
     }
-
+    
     if (new_field->artifact == NONE || new_field->artifact == SPEAR) {
       old_field->player_id = 9;
     } else if (new_field->artifact == BROKEN_ARROW) {
