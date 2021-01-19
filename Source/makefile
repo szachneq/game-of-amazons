@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS=-I.
-DEPS = board_entities.h
+DEPS_AUTONOMOUS = board_entities.h Variables.h
 OBJ_AUTONOMOUS = main_autonomous.o board.o file_parser.o game.o cli_parser.o
-OBJ_INTERACTIVE = main_interactive.o
+OBJ_INTERACTIVE = main_interactive.o Libavailable.o Libinteractive.o Libmovement.o
 
 .PHONY: default
 default: autonomous ;

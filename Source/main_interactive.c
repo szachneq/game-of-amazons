@@ -6,16 +6,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../Lib/Variables.h"
+#include "Variables.h"
 
 Field g_board[INTERNAL_BOARD_SIZE][INTERNAL_BOARD_SIZE];
 
 int g_scores[2] = { 0, 0 };
 
 
-#include "../Lib/Libavailable.h"
-#include "../Lib/Libinteractive.h"
-#include "../Lib/Libmovement.h"
+#include "Libavailable.h"
+#include "Libinteractive.h"
+#include "Libmovement.h"
 
 int main() {
     srand(time(0)); 
