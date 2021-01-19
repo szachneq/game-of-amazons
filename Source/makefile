@@ -12,13 +12,10 @@ default: autonomous ;
 
 autonomous: $(OBJ_AUTONOMOUS)
 	$(CC) -o $@ $^ $(CFLAGS)
-	$(MAKE) clean
+
 
 interactive: $(OBJ_INTERACTIVE)
 	$(CC) -o $@ $^ $(CFLAGS)
-	$(MAKE) clean
-
-.PHONY: clean
 
 clean:
 	rm -f *.o *~

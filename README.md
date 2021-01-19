@@ -52,12 +52,14 @@ Navigate to the `Source` folder.
 Then use the commands:
 
 - For interactive mode
+
 ```
 1. make interactive   // To generate compiled output file
 2. ./interactive      // To run compiled code
 ```
 
 - For autonomous mode
+
 ```
 1. make autonomous   // To generate compiled output file
 2. ./autonomous      // To run compiled code
@@ -68,16 +70,18 @@ Then use the commands:
 1. Install make for windows [YT-Tutorial](https://www.youtube.com/watch?v=taCJhnBXG_w 'Projects Libs')
 
 2. Navigate to the `Source` folder.
-Then use the commands:
+   Then use the commands:
 
 - For interactive mode
+
 ```
-1. make interactive   // To generate compiled output file
+1. make interactive && make clean   // To generate compiled output file
 2. ./interactive.exe  // To run compiled code
 ```
 
 - For autonomous mode
+
 ```
-1. make autonomous   // To generate compiled output file
+1. make autonomous && make clean   // To generate compiled output file
 2. ./autonomous.exe  // To run compiled code
 ```
