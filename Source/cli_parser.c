@@ -7,6 +7,11 @@
 #include "game.h"
 
 void cli_parse(int argc, char *argv[], Game *game) {
+
+  if (argc < 2) {
+    printf("No command line parameters given \n");
+    exit(INTERNAL_ERROR);
+  }
   
   if (strcmp(argv[1], "name") == 0) {
     printf("%s", "GROUP_E");
