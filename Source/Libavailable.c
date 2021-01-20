@@ -4,6 +4,16 @@
 #include "Libinteractive.h"
 #include <math.h>
 
+/**
+ * @brief Function check if any Amazon can move on any field, by iterating through hole board and finding amazonst that belong to defined player.
+ * 
+ * @param game - structure which contains all variables used in the current game state.
+ * 
+ * @note - We are using p as position of amazon and current_player as active player ID. 
+ * 
+ * @return int which is giving result - 1 if true or 0 if false.
+ */
+
 int is_move_possible(Game *game)
  {
     for(int i = 1; i< 11; i++){
@@ -19,9 +29,17 @@ int is_move_possible(Game *game)
             }
         }
     }
-
     return 0;
 }
+
+
+/**
+ * @brief 
+ * 
+ * @param game 
+ * 
+ * @return int 
+ */
 
 int can_amazon_move(Game *game) {
     // takes coordinates of amazon on the board
