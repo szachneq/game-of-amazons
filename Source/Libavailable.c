@@ -13,7 +13,7 @@
  * 
  * @note Field board included in game structure holds player's ID, value of a treasure and type of artifact.
  * 
- * @return int which is giving result - 1 if true or 0 if false.
+ * @returns int which is giving result - 1 if true or 0 if false.
  */
 
 int is_move_possible(Game *game)
@@ -44,7 +44,7 @@ int is_move_possible(Game *game)
  * 
  * @note Field board included in game structure holds player's ID, value of a treasure and type of artifact.
  * 
- * @return int which is giving result 0 if there are no free fields next to the amazon and 1 if there is.
+ * @returns int which is giving result 0 if there are no free fields next to the amazon and 1 if there is.
  */
 
 int can_amazon_move(Game *game) {
@@ -74,7 +74,7 @@ int can_amazon_move(Game *game) {
  * 
  * @note Field board holds player's ID, value of a treasure and type of artifact.
  * 
- * @return int which is giving result 0 if false and 1 if true.
+ * @returns int which is giving result 0 if false and 1 if true.
  */
 
 int is_diagonall(Game *game){
@@ -83,6 +83,22 @@ int is_diagonall(Game *game){
 
     return (xCor == yCor) ? 1 : 0;
 }
+
+/**
+ * @brief Function detects which direction the amazon wants to one.
+ * 
+ * @param game structure which contains all variables used in the current game state, this function uses variables holding: board, p, pAmazon.
+ * 
+ * @param type structure which holds which type of road the amazon will take(verticall,diagonall,horizontall)
+ * 
+ * @note We are using p as position of amazon and current_player as active player ID. 
+ * 
+ * @note We are using pAmazon as a position that we want to move to. 
+ * 
+ * @note Field board holds player's ID, value of a treasure and type of artifact.
+ * 
+ * @returns int which is giving result 0 if false and 1 if true.
+ */
 
 int is_path_clear(Game *game, ERoadType type) {
     
@@ -172,7 +188,17 @@ int is_path_clear(Game *game, ERoadType type) {
     return 1;
 
 }
-
+/**
+ * @brief Function that checks in what direction amazon wants to move.
+ * 
+ * @param game structure which contains all variables used in the current game state, this function uses variables holding: p, pAmazon.
+ * 
+ * @note We are using p as position of amazon and current_player as active player ID. 
+ * 
+ * @note We are using pAmazon as a position that we want to move to. 
+ * 
+ * @returns int which is giving result 0 if none of them and is_path_clear() function if one of them.
+ */
 int can_amazon_move_here(Game *game) {
     // cheack vertically, horizontally, diagonally from amazon if amazon can move and of the field is free
     if(game->p.x == game->pAmazon.x){
@@ -189,6 +215,20 @@ int can_amazon_move_here(Game *game) {
 
     return 0;
 }
+
+/**
+ * @brief Function that checks in what direction amazon wants to move.
+ * 
+ * @param game structure which contains all variables used in the current game state, this function uses variables holding: board, p, pAmazon.
+ * 
+ * @note We are using p as position of amazon and current_player as active player ID. 
+ * 
+ * @note We are using pAmazon as a position that we want to move to. 
+ * 
+ * @note Field board holds player's ID, value of a treasure and type of artifact.
+ * 
+ * @returns int which is giving result 0 if throw is impossible and 1 if possible.
+ */
 
 int can_amazon_throw_spear_here(Game *game) {
     // cheack vertically, horizontally, diagonally from amazon if amazon can move and of the field is free
@@ -212,7 +252,17 @@ int can_amazon_throw_spear_here(Game *game) {
 
     return 0;
 }
-
+/**
+ * @brief Function that checks whether the player can place amazon on choosen spot.
+ * 
+ * @param game structure which contains all variables used in the current game state, this function uses variables holding: board, p.
+ * 
+ * @note We are using p as position of amazon and current_player as active player ID. 
+ * 
+ * @note Field board holds player's ID, value of a treasure and type of artifact.
+ * 
+ * @returns int which is giving result 0 if placement is impossible and 1 if possible.
+ */
 int can_place_here(Game *game) {
     if (game->p.x < 1 || game->p.y < 1) 
     {
