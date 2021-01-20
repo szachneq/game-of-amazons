@@ -102,8 +102,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a689ee8bdd075c65ad822cee720b319b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="board__entities_8h.html#ab0e46687872f8f6d226443877fc7b8a9">EArtifact</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_libmovement_8c.html#a689ee8bdd075c65ad822cee720b319b2">move_amazon</a> (<a class="el" href="struct_game.html">Game</a> *<a class="el" href="main__interactive_8c.html#ac6a5ed6191fcf3a5bf0445921feb4f48">game</a>)</td></tr>
 <tr class="separator:a689ee8bdd075c65ad822cee720b319b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2537cae09f0d0ddeb89dada7f3e553a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_libmovement_8c.html#a2537cae09f0d0ddeb89dada7f3e553a1">add_score</a> (<a class="el" href="struct_game.html">Game</a> *<a class="el" href="main__interactive_8c.html#ac6a5ed6191fcf3a5bf0445921feb4f48">game</a>)</td></tr>
+<tr class="memdesc:a2537cae09f0d0ddeb89dada7f3e553a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function adds score to the current_player's score.  <a href="_libmovement_8c.html#a2537cae09f0d0ddeb89dada7f3e553a1">More...</a><br /></td></tr>
 <tr class="separator:a2537cae09f0d0ddeb89dada7f3e553a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68b483801e2661ca48167e8c91be1913"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_libmovement_8c.html#a68b483801e2661ca48167e8c91be1913">shootArrow</a> (<a class="el" href="struct_game.html">Game</a> *<a class="el" href="main__interactive_8c.html#ac6a5ed6191fcf3a5bf0445921feb4f48">game</a>)</td></tr>
+<tr class="memdesc:a68b483801e2661ca48167e8c91be1913"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function places an arrow on the board and.  <a href="_libmovement_8c.html#a68b483801e2661ca48167e8c91be1913">More...</a><br /></td></tr>
 <tr class="separator:a68b483801e2661ca48167e8c91be1913"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a845aae34bcfb30319f46c0231568c965"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_libmovement_8c.html#a845aae34bcfb30319f46c0231568c965">throw_spear</a> (<a class="el" href="struct_game.html">Game</a> *<a class="el" href="main__interactive_8c.html#ac6a5ed6191fcf3a5bf0445921feb4f48">game</a>)</td></tr>
 <tr class="separator:a845aae34bcfb30319f46c0231568c965"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,6 +133,17 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Function adds score to the current_player's score. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>structure which contains all variables used in the current game state, this function uses variables holding: board, pAmazon, current_player.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>We are using pAmazon as a position that we want to move to.</dd>
+<dd>
+<a class="el" href="struct_field.html" title="structure describing fields on the board">Field</a> board holds player's ID, value of a treasure and type of artifact. </dd></dl>
 
 </div>
 </div>
@@ -203,6 +216,17 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Function places an arrow on the board and. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">game</td><td>structure which contains all variables used in the current game state, this function uses variables holding: board, pAmazon, current_player.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>We are using pAmazon as a position that we want to move to.</dd>
+<dd>
+<a class="el" href="struct_field.html" title="structure describing fields on the board">Field</a> board holds player's ID, value of a treasure and type of artifact. </dd></dl>
 
 </div>
 </div>

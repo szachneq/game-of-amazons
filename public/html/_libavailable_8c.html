@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('_libavailable_8c.html',''); initResiza
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab2ee80ca174601d59f85fc3368b1691f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_libavailable_8c.html#ab2ee80ca174601d59f85fc3368b1691f">is_move_possible</a> (<a class="el" href="struct_game.html">Game</a> *<a class="el" href="main__interactive_8c.html#ac6a5ed6191fcf3a5bf0445921feb4f48">game</a>)</td></tr>
-<tr class="memdesc:ab2ee80ca174601d59f85fc3368b1691f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function check if any Amazon can move on any field, by iterating through hole board and finding amazons that belong to defined player.  <a href="_libavailable_8c.html#ab2ee80ca174601d59f85fc3368b1691f">More...</a><br /></td></tr>
+<tr class="memdesc:ab2ee80ca174601d59f85fc3368b1691f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function checks whether the move is possible.  <a href="_libavailable_8c.html#ab2ee80ca174601d59f85fc3368b1691f">More...</a><br /></td></tr>
 <tr class="separator:ab2ee80ca174601d59f85fc3368b1691f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2b887215a003403f06175145b7b784b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_libavailable_8c.html#aa2b887215a003403f06175145b7b784b">can_amazon_move</a> (<a class="el" href="struct_game.html">Game</a> *<a class="el" href="main__interactive_8c.html#ac6a5ed6191fcf3a5bf0445921feb4f48">game</a>)</td></tr>
 <tr class="memdesc:aa2b887215a003403f06175145b7b784b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that checks all fields next to the amazon and returns whether the amazon can move.  <a href="_libavailable_8c.html#aa2b887215a003403f06175145b7b784b">More...</a><br /></td></tr>
@@ -174,7 +174,7 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>We are using p as position of amazon and current_player as active player ID.</dd>
 <dd>
 We are using pAmazon as a position that we want to move to.</dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>int which is giving result 0 if none of them and <a class="el" href="_libavailable_8c.html#ad5848abd78d6b54be1e1cc0c02a9cfdf" title="Function detects which direction the amazon wants to one.">is_path_clear()</a> function if one of them. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>int which is giving result 0 if none of them and <a class="el" href="_libavailable_8h.html#ad5848abd78d6b54be1e1cc0c02a9cfdf" title="Function detects which direction the amazon wants to one.">is_path_clear()</a> function if one of them. </dd></dl>
 
 </div>
 </div>
@@ -288,17 +288,14 @@ We are using pAmazon as a position that we want to move to.</dd>
       </table>
 </div><div class="memdoc">
 
-<p>Function check if any Amazon can move on any field, by iterating through hole board and finding amazons that belong to defined player. </p>
+<p>Function checks whether the move is possible. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">game</td><td>structure which contains all variables used in the current game state, this function uses variables holding: board, p.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>- We are using p as position of amazon and current_player as active player ID.</dd>
-<dd>
-<a class="el" href="struct_field.html" title="structure describing fields on the board">Field</a> board included in game structure holds player's ID, value of a treasure and type of artifact.</dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>int which is giving result - 1 if true or 0 if false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>int which is giving result 0 if there are no free fields next to the amazon and 1 if there is. </dd></dl>
 
 </div>
 </div>
