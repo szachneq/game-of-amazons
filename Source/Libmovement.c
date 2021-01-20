@@ -103,10 +103,26 @@ EArtifact move_amazon(Game *game) {
 
 }
 
+/**
+ * @brief Function adds score to the current_player's score.
+ * 
+ * @param game structure which contains all variables used in the current game state, this function uses variables holding: board, pAmazon, current_player.
+ * 
+ * @note We are using pAmazon as a position that we want to move to. 
+ * 
+ * @note Field board holds player's ID, value of a treasure and type of artifact.
+ */
 void add_score(Game *game){
     game->g_scores[game->current_player - 1] += game->board[game->pAmazon.y][game->pAmazon.x].value;
 }
-
+/**
+ * @brief Function places an arrow on the board and 
+ * @param game structure which contains all variables used in the current game state, this function uses variables holding: board, pAmazon, current_player.
+ * 
+ * @note We are using pAmazon as a position that we want to move to. 
+ * 
+ * @note Field board holds player's ID, value of a treasure and type of artifact.
+ */
 void shootArrow(Game *game) {
 
     // shoot arrow code
@@ -115,7 +131,7 @@ void shootArrow(Game *game) {
 	        printf("Player %d, enter coordinates to shoot an arrow.\n", game->current_player);
 		    
             printf("Coordinate X: ");
-
+    
             while(scanf("%d", &game->p.x)==0){
                 printf("\nNon-numeric input detected. Input a number.\n");
                 scanf(" %*s ");
