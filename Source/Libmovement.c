@@ -13,8 +13,21 @@ EArtifact choose_amazon(Game *game)
     while (!game->g_is_horse) 
     {
         do{
-        printf("Player %d, input coordinates for amazon that you want to move (x, y): ", game->current_player);
-        scanf("%d %d", &game->pAmazon.x, &game->pAmazon.y);
+        printf("Player %d, input coordinates for amazon that you want to move \n", game->current_player);
+        printf("coordinate X: ");
+            while(scanf("%d", &game->pAmazon.x)==0){
+                printf("Non-numeric input detected. Input a number.\n");
+                getchar();
+                printf("coordinate X: ");
+            }
+            printf("coordinate Y: ");
+            while(scanf("%d", &game->pAmazon.y)==0){
+                printf("Non-numeric input detected. Input a number.\n");
+                getchar();
+                printf("coordinate Y: ");
+            }
+
+
             if(game->board[game->pAmazon.y][game->pAmazon.x].playerID != game->current_player) 
             {
                 printf("Hmmm, missclick?\n");
@@ -44,8 +57,23 @@ EArtifact move_amazon(Game *game) {
 
     do
     {
-        printf("Player %d, input coordinates for amazon to move (x, y): ", game->current_player);
-        scanf("%d %d", &game->p.x, &game->p.y);
+        printf("Player %d, input coordinates for amazon to move\n", game->current_player);
+          printf("coordinate X: ");
+
+            while(scanf("%d", &game->p.x)==0){
+                printf("Non-numeric input detected. Input a number.\n");
+                getchar();
+                printf("coordinate X: ");
+            }
+            printf("coordinate Y: ");
+            while(scanf("%d", &game->p.y)==0){
+                printf("Non-numeric input detected. Input a number.\n");
+                getchar();
+                printf("coordinate Y: ");
+            }
+        
+
+
     } while(can_amazon_move_here(game) == 0);
 
                 
@@ -84,8 +112,21 @@ void shootArrow(Game *game) {
     // shoot arrow code
 
         do{
-	        printf("Player %d, enter coordinates to shoot an arrow (x, y):", game->current_player);
-		    scanf("%d %d", &game->p.x, &game->p.y);
+	        printf("Player %d, enter coordinates to shoot an arrow\n", game->current_player);
+		    
+            printf("coordinate X: ");
+
+            while(scanf("%d", &game->p.x)==0){
+                printf("Non-numeric input detected. Input a number.\n");
+                getchar();
+                printf("coordinate X: ");
+            }
+            printf("coordinate Y: ");
+            while(scanf("%d", &game->p.y)==0){
+                printf("Non-numeric input detected. Input a number.\n");
+                getchar();
+                printf("coordinate Y: ");
+            }
 
             if(can_amazon_move_here(game)){
             game->board[game->p.y][game->p.x].playerID = 9;        
@@ -101,8 +142,20 @@ void shootArrow(Game *game) {
 void throw_spear(Game *game) {
 
         do{
-	        printf("Player %d, enter coordinates to shoot an spear", game->current_player);
-		    scanf("%d %d", &game->p.x, &game->p.y);
+	        printf("Player %d, enter coordinates to shoot an spear\n", game->current_player);
+		   printf("coordinate X: ");
+
+            while(scanf("%d", &game->p.x)==0){
+                printf("Non-numeric input detected. Input a number.\n");
+                getchar();
+                printf("coordinate X: ");
+            }
+            printf("coordinate Y: ");
+            while(scanf("%d", &game->p.y)==0){
+                printf("Non-numeric input detected. Input a number.\n");
+                getchar();
+                printf("coordinate Y: ");
+            }
 
             if(can_amazon_throw_spear_here(game)){
             game->board[game->p.y][game->p.x].playerID = 9;        
