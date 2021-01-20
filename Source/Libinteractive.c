@@ -96,7 +96,7 @@ void init_placement(Game *game) {
     printf("Input amount of the amazons: ");
 
    while(scanf("%d", &amazons)==0){
-       printf("Non-numeric input detected. Input a number.\n");
+       printf("\nNon-numeric input detected. Input a number.\n");
        getchar();
        printf("Input amount of the amazons: ");
      }
@@ -106,19 +106,19 @@ void init_placement(Game *game) {
         position p = { .x=0, .y=0 };
         while (1) {
             present_board_state(game);
-            printf("Player %d, input coordinates for amazon (x, y)\n", player_id);
-            printf("coordinate X: ");
+            printf("Player %d, input coordinates for amazon.\n", player_id);
+            printf("Cordinate X: ");
 
             while(scanf("%d", &game->p.x)==0){
-                printf("Non-numeric input detected. Input a number.\n");
+                printf("\nNon-numeric input detected. Input a number.\n");
                 getchar();
-                printf("coordinate X: ");
+                printf("Coordinate X: ");
             }
-            printf("coordinate Y: ");
+            printf("Coordinate Y: ");
             while(scanf("%d", &game->p.y)==0){
-                printf("Non-numeric input detected. Input a number.\n");
+                printf("\nNon-numeric input detected. Input a number.\n");
                 getchar();
-                printf("coordinate Y: ");
+                printf("Coordinate Y: ");
             }
             if (can_place_here(game)) break;
         }

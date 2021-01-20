@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 
   if (game.phase == PLACEMENT) {
     if (count_our_amazons(&game) >= game.amazons) {
-      printf("cant place more amazons, limit exceeded \n");
+      printf("Can't place more amazons, limit exceeded \n");
       exit(MOVE_IMPOSSIBLE);
     }
     place_amazon_randomly(&game);
@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (found_amazons < 1) {
-      printf("Cant move any amazon \n");
+      printf("Cant move any amazon.\n");
       exit(MOVE_IMPOSSIBLE);
     }
 
