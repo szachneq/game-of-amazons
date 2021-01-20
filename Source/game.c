@@ -6,6 +6,13 @@
 #include "cli_parser.h"
 #include "file_parser.h"
 
+/**
+ * @brief Create a game object using specified command line parameters
+ * 
+ * @param argc number of command line parameters
+ * @param argv array of command line parameters
+ * @return created Game object
+ */
 Game create_game(int argc, char *argv[]) {
   Game game;
 
@@ -16,6 +23,12 @@ Game create_game(int argc, char *argv[]) {
   return game;
 }
 
+/**
+ * @brief Get id of our group during current game
+ * 
+ * @param game pointer to game object
+ * @return int id of our group
+ */
 int get_our_id(Game *game) {
   int our_id = 0;
   for (int i = 0; i < game->num_players; i++) {
@@ -29,6 +42,12 @@ int get_our_id(Game *game) {
   return our_id;
 }
 
+/**
+ * @brief counts how many amazons we placed on the board
+ * 
+ * @param game pointer to game object
+ * @return int  amount of amazons our team placed
+ */
 int count_our_amazons(Game *game) {
   int our_id = get_our_id(game);
   int num_fields = game->board.height * game->board.width;
@@ -41,6 +60,11 @@ int count_our_amazons(Game *game) {
   return num_amazons;
 }
 
+/**
+ * @brief place amazon on any available field
+ * 
+ * @param game pointer to game object
+ */
 void place_amazon_randomly(Game *game) {
   int our_id = get_our_id(game);
   int num_fields = game->board.height * game->board.width;
