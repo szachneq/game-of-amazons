@@ -6,6 +6,7 @@
 - [Project Members](#project-members)
 - [Reports](#reports)
 - [Typing Conventions](#typing-convention)
+- [Manual and automatic tests](#manual-and-automatic-tests)
 - [Running the code](#running-the-code)
 
 ## Short description
@@ -44,7 +45,11 @@ Local variables     lower_case or lowerCase
 Global variables    g_lowerCase or g_lower_case (searchable by g_ prefix)
 ```
 
-## Manual tests
+## Manual and automatic tests
+
+In directory "Docs/Manual Tests" we have provided logs form correctly working game. Including compilation and move validation, command line parameters validation also read and write capabilities.
+
+We have done automated tests on a game tester (amazon disc provided by tutor). All test takes has been passed. During test we haven't met any errors or bugs.
 
 ## Running the code
 
