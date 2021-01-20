@@ -43,4 +43,14 @@ void throw_spear(Game *game);
  */
 void init_movement(Game *game);
 
+/**
+ * @brief add value to players scoreboard.
+ * 
+ * @param game structure which contains all variables used in the current game state, this function uses variables holding: current_player.
+ */
+
+void add_score(Game *game);
+
+
+
 #endif
