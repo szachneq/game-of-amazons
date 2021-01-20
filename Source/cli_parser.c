@@ -52,6 +52,8 @@ void cli_parse(int argc, char *argv[], Game *game) {
     }
   }
 
+}
+
 /**
  * @brief reads phase of the game from command line parameters
  * 
