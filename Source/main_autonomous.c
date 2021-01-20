@@ -106,11 +106,16 @@ int main(int argc, char *argv[]) {
       }
 
       if (new_field->artifact == BROKEN_ARROW) {
+        new_field->artifact = 0;
         break;
         // just do nothing
       }
 
       if (new_field->artifact == HORSE) {
+
+        Field *nas_ne_dogonyat;
+
+        do{
         old_field->player_id = 9;
         int can_move = 0;
 
@@ -132,22 +137,18 @@ int main(int argc, char *argv[]) {
             break;
           }
         }
-  
+        
         old_field->player_id = 9;
-        new_field = get_field(game.board, new_position);
-        new_field->player_id = our_id;
-        game.players[our_id-1].points += new_field->value;
-        new_field->value = 0;
-        
-        
-        // old_field = get_field(game.board, new_position);
-        // old_position.x = new_position.x;
-        // old_position.y = new_position.y;
+        nas_ne_dogonyat = get_field(game.board, new_position);
+        nas_ne_dogonyat->player_id = our_id;
+        game.players[our_id-1].points += nas_ne_dogonyat->value;
+        nas_ne_dogonyat->value = 0;
 
+        if(nas_ne_dogonyat->artifact == HORSE){
+          old_field = nas_ne_dogonyat;
+        }
 
-
-
-
+        }while(nas_ne_dogonyat->artifact == HORSE);
         break;
       }
 
