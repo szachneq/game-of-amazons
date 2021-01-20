@@ -17,13 +17,13 @@ EArtifact choose_amazon(Game *game)
         printf("Coordinate X: ");
             while(scanf("%d", &game->pAmazon.x)==0){
                 printf("\nNon-numeric input detected. Input a number.\n");
-                getchar();
+                scanf(" %*s ");
                 printf("Coordinate X: ");
             }
             printf("Coordinate Y: ");
             while(scanf("%d", &game->pAmazon.y)==0){
                 printf("\nNon-numeric input detected. Input a number.\n");
-                getchar();
+                scanf(" %*s ");
                 printf("Coordinate Y: ");
             }
 
@@ -62,13 +62,13 @@ EArtifact move_amazon(Game *game) {
 
             while(scanf("%d", &game->p.x)==0){
                 printf("\nNon-numeric input detected. Input a number.\n");
-                getchar();
+                scanf(" %*s ");
                 printf("Coordinate X: ");
             }
             printf("Coordinate Y: ");
             while(scanf("%d", &game->p.y)==0){
                 printf("\nNon-numeric input detected. Input a number.\n");
-                getchar();
+                scanf(" %*s ");
                 printf("Coordinate Y: ");
             }
         
@@ -118,13 +118,13 @@ void shootArrow(Game *game) {
 
             while(scanf("%d", &game->p.x)==0){
                 printf("\nNon-numeric input detected. Input a number.\n");
-                getchar();
+                scanf(" %*s ");
                 printf("Coordinate X: ");
             }
             printf("Coordinate Y: ");
             while(scanf("%d", &game->p.y)==0){
                 printf("\nNon-numeric input detected. Input a number.\n");
-                getchar();
+                scanf(" %*s ");
                 printf("Coordinate Y: ");
             }
 
@@ -147,13 +147,13 @@ void throw_spear(Game *game) {
 
             while(scanf("%d", &game->p.x)==0){
                 printf("\nNon-numeric input detected. Input a number.\n");
-                getchar();
+                scanf(" %*s ");
                 printf("Coordinate X: ");
             }
             printf("Coordinate Y: ");
             while(scanf("%d", &game->p.y)==0){
                 printf("\nNon-numeric input detected. Input a number.\n");
-                getchar();
+                scanf(" %*s ");
                 printf("Coordinate Y: ");
             }
 
