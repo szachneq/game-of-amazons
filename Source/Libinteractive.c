@@ -6,6 +6,15 @@
 #include "Libavailable.h"
 #include "Libmovement.h"
 
+
+
+/**
+ * @brief Function which generates the board and randomly sets artifacts and treasures.
+ * 
+ * @param game structure which contains all variables used in the current game state, this function uses variables holding: board.
+ * @note Field board included in game structure holds player's ID, value of a treasure and type of artifact.
+ * @warning Randomly choosen values and artifacts have adjusted suitable frequency.
+ */
 void generate_board(Game *game) {
     printf("Generating game board...\n");
 
