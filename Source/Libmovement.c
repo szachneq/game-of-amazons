@@ -77,24 +77,24 @@ EArtifact move_amazon(Game *game) {
     } while(can_amazon_move_here(game) == 0);
 
                 
-    // 4. Clean the old spot
+    // 1. Clean the old spot
     game->board[game->pAmazon.y][game->pAmazon.x].playerID = 0;
     game->board[game->pAmazon.y][game->pAmazon.x].artifact = 0;
     game->board[game->pAmazon.y][game->pAmazon.x].value = 0;
 
-    // 5. Move amazon to new position
+    // 2. Move amazon to new position
     game->board[game->p.y][game->p.x].playerID = game->current_player;
 
     currFieldArtifact = (EArtifact) game->board[game->p.y][game->p.x].artifact;
-    // 5.1 update amazon position
+    // 3. update amazon position
 
     game->pAmazon = game->p;
 
 
-    // 6. add_score()
+    // 4. add_score()
     add_score(game);
 
-    // Clear new spot
+    // 5. Clear new spot
     game->board[game->p.y][game->p.x].value = 0;
     game->board[game->p.y][game->p.x].artifact = 0;
 
