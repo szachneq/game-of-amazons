@@ -6,6 +6,11 @@
 #include "error_codes.h"
 #include "game.h"
 
+/**
+ * @brief load game state from file. Name of the file is stored inside the game structure
+ * 
+ * @param game pointer to game object
+ */
 void load_game_state(Game *game) {
   FILE *file = fopen(game->input_file_name, "r");
   if (file == NULL) {
@@ -20,6 +25,12 @@ void load_game_state(Game *game) {
   fclose(file);
 }
 
+/**
+ * @brief reads size of board specified in the file
+ * 
+ * @param file pointer to file buffer from which we want to load the size
+ * @param board pointer to board structure
+ */
 void read_board_size(FILE *file, Board *board) {
   rewind(file);
   char line[MAX_LINE_WIDTH];
@@ -32,6 +43,14 @@ void read_board_size(FILE *file, Board *board) {
   board->width = atoi(token);
 }
 
+/**
+ * @brief reads part of the file describing the board state and turns it into array of string tokens describing fields
+ * 
+ * @param file pointer to file buffer
+ * @param height height of the board
+ * @param width width of the board
+ * @param tokens array to which we want to load the tokens
+ */
 void tokenize_board_file(FILE *file, int height, int width, char tokens[][4]) {
   rewind(file);
   char line[MAX_LINE_WIDTH];
@@ -49,14 +68,18 @@ void tokenize_board_file(FILE *file, int height, int width, char tokens[][4]) {
   }
 }
 
-// reads player info into game object
+/**
+ * @brief loads information about players from file to game object
+ * 
+ * @param file pointer to file buffer
+ * @param game pointer to game object
+ */
 void read_player_info(FILE *file, Game *game) {
   rewind(file);
   char line[MAX_LINE_WIDTH];
   // skip to the part of the file which stores player info
   for (int row = 0; row < game->board.height + 1; row++) {
     fgets(line, MAX_LINE_WIDTH, file);
-    // printf("%s", line);
   }
 
   // Load player information from the file
@@ -88,6 +111,11 @@ void read_player_info(FILE *file, Game *game) {
   }
 }
 
+/**
+ * @brief save current game state to file
+ * 
+ * @param game pointer to game object
+ */
 void write_game_state(Game *game) {
   FILE *file = fopen(game->output_file_name, "w");
 
