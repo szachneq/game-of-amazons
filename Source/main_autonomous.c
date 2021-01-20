@@ -86,6 +86,7 @@ int main(int argc, char *argv[]) {
         Position r = { .x = amazon_positions[index].x+x_dir, .y = amazon_positions[index].y+y_dir };
         Field *test = get_field(game.board, r);
         if (test == NULL) continue;
+
         if (test->player_id == 0) {
           old_field->player_id = 0;
           new_position.x = r.x;
@@ -94,25 +95,59 @@ int main(int argc, char *argv[]) {
           new_field->player_id = our_id;
           game.players[our_id-1].points += new_field->value;
           new_field->value = 0;
+          moved = 1;
         }
         counter++;
         if (counter > 10) { break; }
       }
-      
-      if (new_field->artifact == NONE || new_field->artifact == SPEAR) {
+      if(new_field->artifact == NONE || new_field->artifact == SPEAR) {
         old_field->player_id = 9;
         break;
       }
+
       if (new_field->artifact == BROKEN_ARROW) {
         break;
         // just do nothing
       }
+
       if (new_field->artifact == HORSE) {
-        printf("doing horse stuff \n");
         old_field->player_id = 9;
-        old_field = get_field(game.board, new_position);
-        old_position.x = new_position.x;
-        old_position.y = new_position.y;
+        int can_move = 0;
+
+        for (int i = 0; i < 3; i++) {
+          for (int j = 0; j < 3; j++) {
+            Position r = { .x = new_position.x-1+j, .y = new_position.y-1+i };
+            Field *test = get_field(game.board, r);
+            if (test == NULL) continue;
+            if (test->player_id == 0) { 
+              can_move = 1;
+              old_field = new_field;
+              old_position = new_position;
+              new_position = r;
+
+              break;
+            }
+          }
+          if(can_move){
+            break;
+          }
+        }
+  
+        old_field->player_id = 9;
+        new_field = get_field(game.board, new_position);
+        new_field->player_id = our_id;
+        game.players[our_id-1].points += new_field->value;
+        new_field->value = 0;
+        
+        
+        // old_field = get_field(game.board, new_position);
+        // old_position.x = new_position.x;
+        // old_position.y = new_position.y;
+
+
+
+
+
         break;
       }
 
