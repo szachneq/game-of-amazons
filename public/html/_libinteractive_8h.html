@@ -108,64 +108,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a9c9f26eb4d94dea678397de3b4aca9c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_libinteractive_8h.html#a9c9f26eb4d94dea678397de3b4aca9c9">place_amazon</a> (<a class="el" href="struct_game.html">Game</a> *<a class="el" href="main__interactive_8c.html#ac6a5ed6191fcf3a5bf0445921feb4f48">game</a>, int player)</td></tr>
 <tr class="memdesc:a9c9f26eb4d94dea678397de3b4aca9c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function places an amazon.  <a href="_libinteractive_8h.html#a9c9f26eb4d94dea678397de3b4aca9c9">More...</a><br /></td></tr>
 <tr class="separator:a9c9f26eb4d94dea678397de3b4aca9c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd2593e59225c7b266493cba851e725c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_libinteractive_8h.html#afd2593e59225c7b266493cba851e725c">can_place_here</a> (<a class="el" href="struct_game.html">Game</a> *<a class="el" href="main__interactive_8c.html#ac6a5ed6191fcf3a5bf0445921feb4f48">game</a>)</td></tr>
-<tr class="memdesc:afd2593e59225c7b266493cba851e725c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that checks whether the player can place amazon on choosen spot.  <a href="_libinteractive_8h.html#afd2593e59225c7b266493cba851e725c">More...</a><br /></td></tr>
-<tr class="separator:afd2593e59225c7b266493cba851e725c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c4a8806c0104af430dbeee282cc3bf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_libinteractive_8h.html#a6c4a8806c0104af430dbeee282cc3bf2">init_placement</a> (<a class="el" href="struct_game.html">Game</a> *<a class="el" href="main__interactive_8c.html#ac6a5ed6191fcf3a5bf0445921feb4f48">game</a>)</td></tr>
 <tr class="memdesc:a6c4a8806c0104af430dbeee282cc3bf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">One of the leading functions, it asks the user about amount of amazons and coordinates on which the player places the amazons.  <a href="_libinteractive_8h.html#a6c4a8806c0104af430dbeee282cc3bf2">More...</a><br /></td></tr>
 <tr class="separator:a6c4a8806c0104af430dbeee282cc3bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2537cae09f0d0ddeb89dada7f3e553a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_libinteractive_8h.html#a2537cae09f0d0ddeb89dada7f3e553a1">add_score</a> (<a class="el" href="struct_game.html">Game</a> *<a class="el" href="main__interactive_8c.html#ac6a5ed6191fcf3a5bf0445921feb4f48">game</a>)</td></tr>
-<tr class="separator:a2537cae09f0d0ddeb89dada7f3e553a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a2537cae09f0d0ddeb89dada7f3e553a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2537cae09f0d0ddeb89dada7f3e553a1">&#9670;&nbsp;</a></span>add_score()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void add_score </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_game.html">Game</a> *&#160;</td>
-          <td class="paramname"><em>game</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afd2593e59225c7b266493cba851e725c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd2593e59225c7b266493cba851e725c">&#9670;&nbsp;</a></span>can_place_here()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int can_place_here </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_game.html">Game</a> *&#160;</td>
-          <td class="paramname"><em>game</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Function that checks whether the player can place amazon on choosen spot. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">game</td><td>structure which contains all variables used in the current game state, this function uses variables holding: board, p.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>We are using p as position of amazon and current_player as active player ID.</dd>
-<dd>
-<a class="el" href="struct_field.html" title="structure describing fields on the board">Field</a> board holds player's ID, value of a treasure and type of artifact.</dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>int which is giving result 0 if placement is impossible and 1 if possible. </dd></dl>
-
-</div>
-</div>
 <a id="ac029b9e0f048afaca39b53ab2961d759"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac029b9e0f048afaca39b53ab2961d759">&#9670;&nbsp;</a></span>generate_board()</h2>
 
@@ -217,7 +164,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd><a class="el" href="struct_field.html" title="structure describing fields on the board">Field</a> board included in game structure holds player's ID, value of a treasure and type of artifact. </dd>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="struct_field.html" title="structure describing fields on the board">Field</a> board included in game structure holds player's ID, value of a treasure and type of artifact.</dd>
 <dd>
 <a class="el" href="struct_position.html" title="structure describing coordinates on the board">Position</a> p included in game structure holds amazons coordinates. </dd></dl>
 

@@ -1,7 +1,5 @@
 var _libinteractive_8h =
 [
-    [ "add_score", "_libinteractive_8h.html#a2537cae09f0d0ddeb89dada7f3e553a1", null ],
-    [ "can_place_here", "_libinteractive_8h.html#afd2593e59225c7b266493cba851e725c", null ],
     [ "generate_board", "_libinteractive_8h.html#ac029b9e0f048afaca39b53ab2961d759", null ],
     [ "init_placement", "_libinteractive_8h.html#a6c4a8806c0104af430dbeee282cc3bf2", null ],
     [ "place_amazon", "_libinteractive_8h.html#a9c9f26eb4d94dea678397de3b4aca9c9", null ],

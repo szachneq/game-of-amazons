@@ -13,7 +13,11 @@ Game game;
 #include "Libavailable.h"
 #include "Libinteractive.h"
 #include "Libmovement.h"
-
+/**
+ * @brief Function which starts the whole game and emerges the winner.
+ * 
+ * @returns 0 to finish the game.
+ */
 int main() {
     srand(time(0)); 
 

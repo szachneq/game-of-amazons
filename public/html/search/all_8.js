@@ -8,7 +8,7 @@ var searchData=
   ['input_5ffile_5fname_49',['input_file_name',['../struct_game.html#a42d81a053888d7d388b6f601be2f46da',1,'Game']]],
   ['internal_5fboard_5fsize_50',['INTERNAL_BOARD_SIZE',['../_variables_8h.html#a75c3c3394ab7622eb543419678bc77f6',1,'Variables.h']]],
   ['internal_5ferror_51',['INTERNAL_ERROR',['../error__codes_8h.html#a243b1b1f8ca7e7e98ac73a2d115256f4',1,'error_codes.h']]],
-  ['is_5fdiagonall_52',['is_diagonall',['../_libavailable_8c.html#af2c635588acc8e998e5cef31afa1fb64',1,'Libavailable.c']]],
+  ['is_5fdiagonall_52',['is_diagonall',['../_libavailable_8c.html#af2c635588acc8e998e5cef31afa1fb64',1,'is_diagonall(Game *game):&#160;Libavailable.c'],['../_libavailable_8h.html#af2c635588acc8e998e5cef31afa1fb64',1,'is_diagonall(Game *game):&#160;Libavailable.c']]],
   ['is_5fmove_5fpossible_53',['is_move_possible',['../_libavailable_8c.html#ab2ee80ca174601d59f85fc3368b1691f',1,'is_move_possible(Game *game):&#160;Libavailable.c'],['../_libavailable_8h.html#ab2ee80ca174601d59f85fc3368b1691f',1,'is_move_possible(Game *game):&#160;Libavailable.c']]],
-  ['is_5fpath_5fclear_54',['is_path_clear',['../_libavailable_8c.html#ad5848abd78d6b54be1e1cc0c02a9cfdf',1,'Libavailable.c']]]
+  ['is_5fpath_5fclear_54',['is_path_clear',['../_libavailable_8c.html#ad5848abd78d6b54be1e1cc0c02a9cfdf',1,'is_path_clear(Game *game, ERoadType type):&#160;Libavailable.c'],['../_libavailable_8h.html#ad5848abd78d6b54be1e1cc0c02a9cfdf',1,'is_path_clear(Game *game, ERoadType type):&#160;Libavailable.c']]]
 ];
