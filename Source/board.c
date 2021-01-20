@@ -5,6 +5,12 @@
 #include "board.h"
 #include "file_parser.h"
 
+/**
+ * @brief read board info from specified file buffer into board data structure
+ * 
+ * @param file file buffer to file from which you want to read the data
+ * @param board pointer to board structure
+ */
 void initialize_board(FILE *file, Board *board) {
   char tokens[board->height * board->width * 4][4];
   tokenize_board_file(file, board->height, board->width, tokens);
@@ -16,6 +22,16 @@ void initialize_board(FILE *file, Board *board) {
   }
 }
 
+/**
+ * @brief creates data structure describing the field from string of characters loaded from file
+ * 
+ * @param token char array describing field from which we want load the data
+ *    first char describes amount of treasure (number expected)
+ *    second char describes artifact (number expected)
+ *    third char describes player id (number expected)
+ *    last character is reserved for \0 character
+ * @return Field data structure containing information about a field
+ */
 Field field_from_token(char token[4]) {
   Field field;
   field.value = (int)(token[0] - '0');
@@ -24,6 +40,12 @@ Field field_from_token(char token[4]) {
   return field;
 }
 
+/**
+ * @brief serializes data structure describing the field into array of characters (token) which can be written to file
+ * 
+ * @param field data structure describing field that we will use to generate the token
+ * @param token pointer to array of char to which we will save the token
+ */
 void field_to_token(Field field, char token[4]) {
   token[0] = field.value + '0';
   token[1] = (int)(field.artifact) + '0';
@@ -31,6 +53,13 @@ void field_to_token(Field field, char token[4]) {
 }
 
 // get pointer to field using 1 based counting
+/**
+ * @brief Get pointer to field on given position coordinates
+ * @note we are using 1 based counting for position
+ * @param board struct containing board info
+ * @param position struct containing info about position
+ * @return pointer to field on the board, NULL if field doesnt exist
+ */
 Field *get_field(Board board, Position position) {
   int is_out_of_bounds= position.x > board.width ||
                         position.x < 1 ||

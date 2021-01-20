@@ -5,11 +5,13 @@
 #include <math.h>
 
 /**
- * @brief Function check if any Amazon can move on any field, by iterating through hole board and finding amazonst that belong to defined player.
+ * @brief Function check if any Amazon can move on any field, by iterating through hole board and finding amazons that belong to defined player.
  * 
- * @param game - structure which contains all variables used in the current game state.
+ * @param game structure which contains all variables used in the current game state, this function uses variables holding: board, p.
  * 
  * @note - We are using p as position of amazon and current_player as active player ID. 
+ * 
+ * @note Field board included in game structure holds player's ID, value of a treasure and type of artifact.
  * 
  * @return int which is giving result - 1 if true or 0 if false.
  */
@@ -34,11 +36,15 @@ int is_move_possible(Game *game)
 
 
 /**
- * @brief 
+ * @brief Function that checks all fields next to the amazon and returns whether the amazon can move.
  * 
- * @param game 
+ * @param game structure which contains all variables used in the current game state, this function uses variables holding: board, p.
  * 
- * @return int 
+ * @note - We are using p as position of amazon and current_player as active player ID. 
+ * 
+ * @note Field board included in game structure holds player's ID, value of a treasure and type of artifact.
+ * 
+ * @return int which is giving result 0 if there are no free fields next to the amazon and 1 if there is.
  */
 
 int can_amazon_move(Game *game) {
@@ -56,6 +62,20 @@ int can_amazon_move(Game *game) {
 
     return can_move;
 }
+
+/**
+ * @brief Function that checks whether the amazon wants to move in diagonall direction.
+ * 
+ * @param game structure which contains all variables used in the current game state, this function uses variables holding: board, p, pAmazon.
+ * 
+ * @note We are using p as position of amazon and current_player as active player ID. 
+ * 
+ * @note We are using pAmazon as a position that we want to move to. 
+ * 
+ * @note Field board holds player's ID, value of a treasure and type of artifact.
+ * 
+ * @return int which is giving result 0 if false and 1 if true.
+ */
 
 int is_diagonall(Game *game){
     int xCor = abs(game->p.x - game->pAmazon.x);
