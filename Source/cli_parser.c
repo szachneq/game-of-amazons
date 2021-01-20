@@ -6,6 +6,13 @@
 #include "error_codes.h"
 #include "game.h"
 
+/**
+ * @brief parse command line parameters. Check their validity and return appropriate error. If everything is correct, fill game object with data
+ * 
+ * @param argc number of command line arguments
+ * @param argv array of command line arguments
+ * @param game pointer to game object that we want to fill with data
+ */
 void cli_parse(int argc, char *argv[], Game *game) {
 
   if (argc < 2) {
@@ -44,8 +51,14 @@ void cli_parse(int argc, char *argv[], Game *game) {
       exit(INTERNAL_ERROR);
     }
   }
-}
 
+/**
+ * @brief reads phase of the game from command line parameters
+ * 
+ * @param argc number of command line parameters
+ * @param argv array of command line parameters
+ * @return EPhase, enum describing which phase of the game are we in
+ */
 EPhase read_phase(int argc, char *argv[]) {
   if (argc < 2) {
     printf("Not enough parameters \n");
@@ -75,6 +88,13 @@ EPhase read_phase(int argc, char *argv[]) {
   return phase;
 }
 
+/**
+ * @brief read amount of amazons from the command line parameters
+ * 
+ * @param argc number of command line paramaters
+ * @param argv array of command line parameters
+ * @return int amount of amazons that we can place
+ */
 int read_amazons(int argc, char *argv[]) {
   if (argc < 3) {
     printf("Not enough parameters \n");
