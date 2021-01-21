@@ -23,6 +23,10 @@ Player which collects most treasure wins
 - Mateusz Jakubowski {- Paymaster -}
 - Cagla Kuleasan {- Master of the C language -}
 
+## Project documentation on website
+
+[Projet documentation](https://tymzar.github.io/amazons_www_site/ 'Projet documentation')
+
 ## Reports
 
 All meeting reports are available in [Docs](https://gitlab-stud.elka.pw.edu.pl/mjakubo3/epfu20w-104-E-amazons/-/tree/master/Docs 'Projets Docs')
