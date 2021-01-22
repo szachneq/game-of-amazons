@@ -18,18 +18,18 @@ Player which collects most treasure wins
 
 ## Project Members
 
-- Tymon Żarski {- Project manager -}
-- Jan Szachno {+ Guardian of the flock +}
-- Mateusz Jakubowski {- Paymaster -}
-- Cagla Kuleasan {- Master of the C language -}
+- Tymon Żarski
+- Jan Szachno
+- Mateusz Jakubowski
+- Cagla Kuleasan
 
 ## Project documentation on website
 
-[Projet documentation](https://tymzar.github.io/amazons_www_site/ 'Projet documentation')
+[Projet documentation](https://szachneq.github.io/game-of-amazons/ 'Projet documentation')
 
 ## Reports
 
-All meeting reports are available in [Docs](https://gitlab-stud.elka.pw.edu.pl/mjakubo3/epfu20w-104-E-amazons/-/tree/master/Docs 'Projets Docs')
+All meeting reports are available in [reports](https://github.com/szachneq/game-of-amazons/tree/master/reports 'Reports')
 
 Moreover, flowcharts can be found in this directory
 
